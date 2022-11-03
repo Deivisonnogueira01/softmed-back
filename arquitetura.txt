@@ -1,0 +1,43 @@
+Exames 
+idExame: int
+valor : double
+referencia : String
+alterado: boolean
+
+/////
+
+Unidade <Enum>
+md/dl String
+
+ExameEspecifico
+GLICOSE: String
+
+TipoExame
+SOROLOGOGIA:
+BIOQUIMICO
+IMUNOLOGICO
+
+CASOCLINICO
+informacao: string
+numero: int
+id: int
+
+Conduta
+DPOC
+
+EspecialidadeMedica
+- CARDIOLOGIA: String
+
+
+HISTORICO
+idHistorico: string
+dados: String
+
+SIGLAS
+QP: string
+
+HipoteseOpcoes
+idHipoteseOpcoes
+nome: int
+hipoVerdadeioro: boolean
+hipoExplicacao: string
