@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
 import com.ifms.softmed.security.JWTUtil;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.Api;
+//import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "SoftMed", description = "Ferramenta.")
+//@Api(tags = "SoftMed", description = "Ferramenta.")
 @RestController
 public class CasoClinicoController {
     
