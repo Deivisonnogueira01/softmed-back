@@ -1,5 +1,6 @@
 package com.ifms.softmed.domain.model;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -20,5 +21,8 @@ public class CasoClinicoModelo {
 
     private Integer numero;
 
-    private String informacao;
+
+    private List<InformacoesCasoClinico> informacoes;
+
+   // private String informacao;
 }

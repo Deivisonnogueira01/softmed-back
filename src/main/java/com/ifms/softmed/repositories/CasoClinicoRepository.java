@@ -9,4 +9,6 @@ import com.ifms.softmed.domain.model.CasoClinicoModelo;
 public interface CasoClinicoRepository extends JpaRepository<CasoClinicoModelo, Integer>{
     
    
+
+    
 }

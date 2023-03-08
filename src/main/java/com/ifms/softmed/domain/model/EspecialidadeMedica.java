@@ -5,6 +5,8 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.ifms.softmed.domain.enums.Especialidade;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,6 @@ public class EspecialidadeMedica {
     @Id
     private UUID idEspecialidadeMedica;
 
-    private String cardiologia;
+    private Especialidade especialidade;
     
 }

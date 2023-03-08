@@ -1,20 +1,21 @@
 package com.ifms.softmed.services;
 
-import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
-import com.ifms.softmed.repositories.CasoClinicoRepository;
 
-public class CasoClinicoService {
-    @Autowired
-    private CasoClinicoRepository repository;
+@Service
+public interface CasoClinicoService {
 
-  /*   public List<CasoClinicoModelo> findAll(){
-        return repository.findAll();
-    }
-*/
-    
+   
+    Optional<CasoClinicoModelo> findAll();
+  
+/*Criar uma DTO para se Comunicar com o Banco */
+/* E criar uma implementacao da interface do service para chamar os metodos */
 
 }
+    
+
+
