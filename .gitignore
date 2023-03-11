@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+##  files  ##
+!**/src/main/java/com/ifms/softmed/resources/application-dev.properties

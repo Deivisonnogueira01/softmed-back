@@ -1,10 +1,12 @@
 package com.ifms.softmed.domain.model;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,12 +19,13 @@ import lombok.NoArgsConstructor;
 public class CasoClinicoModelo {
     
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer casoClinicoId;
 
     private Integer numero;
 
-
+    @OneToMany(mappedBy = "casoClinicoModelo")
     private List<InformacoesCasoClinico> informacoes;
 
-   // private String informacao;
+ 
 }
