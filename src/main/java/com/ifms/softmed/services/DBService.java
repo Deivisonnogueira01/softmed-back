@@ -15,8 +15,8 @@ public class DBService {
     @Autowired
     private CasoClinicoRepository repository;
 
-    @Autowired
-    private BCryptPasswordEncoder encoder;
+   // @Autowired
+   // private BCryptPasswordEncoder encoder;
 
     void instanciaDb(){
 
