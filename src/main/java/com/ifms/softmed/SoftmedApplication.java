@@ -10,4 +10,5 @@ public class SoftmedApplication {
 		SpringApplication.run(SoftmedApplication.class, args);
 	}
 
+
 }
