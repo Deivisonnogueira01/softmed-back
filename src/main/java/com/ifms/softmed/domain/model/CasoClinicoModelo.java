@@ -1,63 +1,124 @@
 package com.ifms.softmed.domain.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.ifms.softmed.domain.enums.Especialidade;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+//@Table(name = "casos_clinicos")
 @Getter
 @Setter
-public class CasoClinicoModelo {
-    
+@NoArgsConstructor
+public class CasoClinicoModelo implements Serializable{
+         
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer casoClinicoId;
+    protected Integer casoClinicoId;
 
-    private Integer numero;
-
-  /*  @OneToMany(mappedBy = "casoClinicoModelo")
-    private List<InformacoesCasoClinico> informacoes;*/
+    @Column(name = "numero_caso_clinico")
+    protected Integer numero;
 
     @Column(name = "nome")
-    private String nomePaciente;
+    protected String nomePaciente;
 
-    private Integer idadePaciente;
+    @Column(name = "idade")
+    protected Integer idadePaciente;
 
-    private Double alturaPaciente;
+    @Column(name = "altura")
+    protected Double alturaPaciente;
 
-    private Double pesoPaciente;
+    @Column(name = "peso")
+    protected Double pesoPaciente;
 
-    private String sexoPaciente;
+    @Column(name = "sexo")
+    protected String sexoPaciente;
 
-    private String corPaciente;
+    @Column(name = "cor")
+    protected String corPaciente;
 
-    private String profissaoPaciente;
+    @Column(name = "profissao")
+    protected String profissaoPaciente;
 
-    private String religiaoPaciente;
+    @Column(name = "religiao")
+    protected String religiaoPaciente;
 
-    private String naturalPaciente;
+    @Column(name = "natural")
+    protected String naturalPaciente;
 
-    private String residentePaciente;
+    @Column(name = "residente")
+    protected String residentePaciente;
 
-    private String HistoriaDoencaAtual;
+    @Column(name = "hda")
+    protected String historiaDoencaAtual;
 
-    private String queixaPrincipal;
+    @Column(name = "qp")
+    protected String queixaPrincipal;
 
-    private String interrogatorioDiversosAparelhos;
+    @Column(name = "ida")
+    protected String interrogatorioDiversosAparelhos;
 
-    private String historiaPatologicaPregressa;
+    @Column(name = "hpp")
+    protected String historiaPatologicaPregressa;
 
-    private String historiaFamiliar;
+    @Column(name = "hf")
+    protected String historiaFamiliar;
 
-    private String historiaPsicossocial;
+    @Column(name = "hps")
+    protected String historiaPsicossocial;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "ESPECIALIDADES")
+    protected Set<Integer> especialidades = new HashSet<>();
 
     
-   
+    public CasoClinicoModelo(Integer casoClinicoId, Integer numero, String nomePaciente, Integer idadePaciente,
+            Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
+            String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
+            String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
+            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial
+            ) {
+        this.casoClinicoId = casoClinicoId;
+        this.numero = numero;
+        this.nomePaciente = nomePaciente;
+        this.idadePaciente = idadePaciente;
+        this.alturaPaciente = alturaPaciente;
+        this.pesoPaciente = pesoPaciente;
+        this.sexoPaciente = sexoPaciente;
+        this.corPaciente = corPaciente;
+        this.profissaoPaciente = profissaoPaciente;
+        this.religiaoPaciente = religiaoPaciente;
+        this.naturalPaciente = naturalPaciente;
+        this.residentePaciente = residentePaciente;
+        this.historiaDoencaAtual = historiaDoencaAtual;
+        this.queixaPrincipal = queixaPrincipal;
+        this.interrogatorioDiversosAparelhos = interrogatorioDiversosAparelhos;
+        this.historiaPatologicaPregressa = historiaPatologicaPregressa;
+        this.historiaFamiliar = historiaFamiliar;
+        this.historiaPsicossocial = historiaPsicossocial;
+    }
 
- 
+    public Set<Especialidade> getEspecialidade(){
+      return especialidades.stream().map(x -> Especialidade.toEspec(x)).collect(Collectors.toSet());
+    }
+
+    public void addEspecialidade(Especialidade especialidade){{
+        this.especialidades.add(especialidade.getCodigoEspecialidade());
+    }}
+
 }

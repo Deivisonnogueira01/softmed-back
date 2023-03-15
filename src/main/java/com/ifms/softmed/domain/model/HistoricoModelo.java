@@ -9,13 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Entity
+
+
 public class HistoricoModelo {
     
-   @Id 
+ 
    private UUID  idHistorico;
 
    private String dados;

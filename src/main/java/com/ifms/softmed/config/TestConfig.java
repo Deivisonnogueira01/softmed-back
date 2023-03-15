@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.ifms.softmed.services.DBService;
 
+/* 
 @Configuration
 @Profile("test")
 public class TestConfig {
@@ -21,4 +22,4 @@ public class TestConfig {
     this.dbService.instanciaDb();
    }
 
-}
+}*/
