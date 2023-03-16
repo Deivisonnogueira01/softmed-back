@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,70 +15,45 @@ import javax.persistence.Id;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 @Entity
-//@Table(name = "casos_clinicos")
-@Getter
-@Setter
-@NoArgsConstructor
 public class CasoClinicoModelo implements Serializable{
          
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer casoClinicoId;
 
-    @Column(name = "numero_caso_clinico")
     protected Integer numero;
 
-    @Column(name = "nome")
     protected String nomePaciente;
 
-    @Column(name = "idade")
     protected Integer idadePaciente;
 
-    @Column(name = "altura")
     protected Double alturaPaciente;
 
-    @Column(name = "peso")
     protected Double pesoPaciente;
 
-    @Column(name = "sexo")
     protected String sexoPaciente;
 
-    @Column(name = "cor")
     protected String corPaciente;
 
-    @Column(name = "profissao")
     protected String profissaoPaciente;
 
-    @Column(name = "religiao")
     protected String religiaoPaciente;
 
-    @Column(name = "natural")
     protected String naturalPaciente;
 
-    @Column(name = "residente")
     protected String residentePaciente;
 
-    @Column(name = "hda")
     protected String historiaDoencaAtual;
 
-    @Column(name = "qp")
     protected String queixaPrincipal;
 
-    @Column(name = "ida")
     protected String interrogatorioDiversosAparelhos;
 
-    @Column(name = "hpp")
     protected String historiaPatologicaPregressa;
 
-    @Column(name = "hf")
     protected String historiaFamiliar;
 
-    @Column(name = "hps")
     protected String historiaPsicossocial;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -87,6 +61,10 @@ public class CasoClinicoModelo implements Serializable{
     protected Set<Integer> especialidades = new HashSet<>();
 
     
+    public CasoClinicoModelo(){
+        super();
+    }
+
     public CasoClinicoModelo(Integer casoClinicoId, Integer numero, String nomePaciente, Integer idadePaciente,
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
@@ -113,6 +91,7 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaPsicossocial = historiaPsicossocial;
     }
 
+    
     public Set<Especialidade> getEspecialidade(){
       return especialidades.stream().map(x -> Especialidade.toEspec(x)).collect(Collectors.toSet());
     }
@@ -120,5 +99,149 @@ public class CasoClinicoModelo implements Serializable{
     public void addEspecialidade(Especialidade especialidade){{
         this.especialidades.add(especialidade.getCodigoEspecialidade());
     }}
+
+    public Integer getCasoClinicoId() {
+        return casoClinicoId;
+    }
+
+    public void setCasoClinicoId(Integer casoClinicoId) {
+        this.casoClinicoId = casoClinicoId;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getNomePaciente() {
+        return nomePaciente;
+    }
+
+    public void setNomePaciente(String nomePaciente) {
+        this.nomePaciente = nomePaciente;
+    }
+
+    public Integer getIdadePaciente() {
+        return idadePaciente;
+    }
+
+    public void setIdadePaciente(Integer idadePaciente) {
+        this.idadePaciente = idadePaciente;
+    }
+
+    public Double getAlturaPaciente() {
+        return alturaPaciente;
+    }
+
+    public void setAlturaPaciente(Double alturaPaciente) {
+        this.alturaPaciente = alturaPaciente;
+    }
+
+    public Double getPesoPaciente() {
+        return pesoPaciente;
+    }
+
+    public void setPesoPaciente(Double pesoPaciente) {
+        this.pesoPaciente = pesoPaciente;
+    }
+
+    public String getSexoPaciente() {
+        return sexoPaciente;
+    }
+
+    public void setSexoPaciente(String sexoPaciente) {
+        this.sexoPaciente = sexoPaciente;
+    }
+
+    public String getCorPaciente() {
+        return corPaciente;
+    }
+
+    public void setCorPaciente(String corPaciente) {
+        this.corPaciente = corPaciente;
+    }
+
+    public String getProfissaoPaciente() {
+        return profissaoPaciente;
+    }
+
+    public void setProfissaoPaciente(String profissaoPaciente) {
+        this.profissaoPaciente = profissaoPaciente;
+    }
+
+    public String getReligiaoPaciente() {
+        return religiaoPaciente;
+    }
+
+    public void setReligiaoPaciente(String religiaoPaciente) {
+        this.religiaoPaciente = religiaoPaciente;
+    }
+
+    public String getNaturalPaciente() {
+        return naturalPaciente;
+    }
+
+    public void setNaturalPaciente(String naturalPaciente) {
+        this.naturalPaciente = naturalPaciente;
+    }
+
+    public String getResidentePaciente() {
+        return residentePaciente;
+    }
+
+    public void setResidentePaciente(String residentePaciente) {
+        this.residentePaciente = residentePaciente;
+    }
+
+    public String getHistoriaDoencaAtual() {
+        return historiaDoencaAtual;
+    }
+
+    public void setHistoriaDoencaAtual(String historiaDoencaAtual) {
+        this.historiaDoencaAtual = historiaDoencaAtual;
+    }
+
+    public String getQueixaPrincipal() {
+        return queixaPrincipal;
+    }
+
+    public void setQueixaPrincipal(String queixaPrincipal) {
+        this.queixaPrincipal = queixaPrincipal;
+    }
+
+    public String getInterrogatorioDiversosAparelhos() {
+        return interrogatorioDiversosAparelhos;
+    }
+
+    public void setInterrogatorioDiversosAparelhos(String interrogatorioDiversosAparelhos) {
+        this.interrogatorioDiversosAparelhos = interrogatorioDiversosAparelhos;
+    }
+
+    public String getHistoriaPatologicaPregressa() {
+        return historiaPatologicaPregressa;
+    }
+
+    public void setHistoriaPatologicaPregressa(String historiaPatologicaPregressa) {
+        this.historiaPatologicaPregressa = historiaPatologicaPregressa;
+    }
+
+    public String getHistoriaFamiliar() {
+        return historiaFamiliar;
+    }
+
+    public void setHistoriaFamiliar(String historiaFamiliar) {
+        this.historiaFamiliar = historiaFamiliar;
+    }
+
+    public String getHistoriaPsicossocial() {
+        return historiaPsicossocial;
+    }
+
+    public void setHistoriaPsicossocial(String historiaPsicossocial) {
+        this.historiaPsicossocial = historiaPsicossocial;
+    }
 
 }

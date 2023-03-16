@@ -7,19 +7,16 @@ import org.springframework.context.annotation.Profile;
 
 import com.ifms.softmed.services.DBService;
 
-/* 
 @Configuration
 @Profile("test")
 public class TestConfig {
-    
+
     @Autowired
-   private  DBService dbService;
+    private DBService dbService;
 
+    @Bean
+    public void instaciaDB() {
+        this.dbService.instanciaDb();
+    }
 
-   @Bean
-   public void instaciaDB(){
-
-    this.dbService.instanciaDb();
-   }
-
-}*/
+}

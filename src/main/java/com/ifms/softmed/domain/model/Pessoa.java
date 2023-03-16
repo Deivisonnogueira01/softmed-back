@@ -20,10 +20,11 @@ import com.ifms.softmed.domain.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+/* 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "tb_pessoa")
-public abstract class Pessoa implements Serializable {
+public class Pessoa implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +41,5 @@ public abstract class Pessoa implements Serializable {
 
      @JsonFormat(pattern = "dd/mm/yyyy")
      protected LocalDate dataCriacao = LocalDate.now();
-}
+     
+}*/

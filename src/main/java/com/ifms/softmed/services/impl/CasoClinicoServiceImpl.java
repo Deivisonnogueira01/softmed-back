@@ -9,7 +9,7 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
 
     @Override
     public Optional<CasoClinicoModelo> findAll() {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
     

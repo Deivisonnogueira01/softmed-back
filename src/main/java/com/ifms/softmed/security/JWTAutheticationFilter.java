@@ -1,5 +1,6 @@
 package com.ifms.softmed.security;
-import java.io.IOException;
+
+/*import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ifms.softmed.dto.CredenciaisDTO;
 
+/* 
 public class JWTAutheticationFilter extends UsernamePasswordAuthenticationFilter{
     
     private AuthenticationManager authenticationManager;
@@ -26,7 +28,7 @@ public class JWTAutheticationFilter extends UsernamePasswordAuthenticationFilter
 		super();
 		this.authenticationManager = authenticationManager;
 		this.jwtUtil = jwtUtil;
-	}*/
+	}
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -71,4 +73,5 @@ public class JWTAutheticationFilter extends UsernamePasswordAuthenticationFilter
 				+ "\"path\": \"/login\"}";
 	}
 
-}
+}*/
+
