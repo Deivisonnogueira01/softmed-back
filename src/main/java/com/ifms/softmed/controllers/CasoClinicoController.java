@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.dto.CasoClinicoDTO;
 import com.ifms.softmed.services.impl.CasoClinicoServiceImpl;
 
 //import io.swagger.annotations.Api;
@@ -25,9 +26,9 @@ public class CasoClinicoController {
   private CasoClinicoServiceImpl service;
 
   @GetMapping(value = "/{id}")
-  public ResponseEntity<CasoClinicoModelo> findById(@PathVariable Integer id) {
+  public ResponseEntity<CasoClinicoDTO> findById(@PathVariable Integer id) {
     CasoClinicoModelo obj = this.service.findbyId(id);
-    return ResponseEntity.ok().body(obj);
+    return ResponseEntity.ok().body(new CasoClinicoDTO(obj));
 
   }
   /*

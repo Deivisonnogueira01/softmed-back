@@ -74,6 +74,7 @@ public class CasoClinicoDTO implements Serializable {
         this.historiaPatologicaPregressa = obj.getHistoriaPatologicaPregressa();
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
+        this.especialidades = obj.getEspecialidade().stream().map(x -> x.getCodigoEspecialidade()).collect(Collectors.toSet());
     }
 
 
