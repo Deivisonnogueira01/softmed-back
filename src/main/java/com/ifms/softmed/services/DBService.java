@@ -56,7 +56,7 @@ public class DBService {
                 "HISTORIA PATOLOGICA, AQUI",
                 "SOMENTE O VO POSSUI Anemia",
                 "nao possui");
-                caso1.addEspecialidade(Especialidade.CLINICA_MEDICA);
+                caso2.addEspecialidade(Especialidade.CLINICA_MEDICA);
 
                 CasoClinicoModelo caso3 = new CasoClinicoModelo(3,
                 3,
@@ -76,7 +76,7 @@ public class DBService {
                 "HISTORIA PATOLOGICA, AQUI",
                 "SOMENTE O PAI POSSUI DIABETES",
                 "nao possui");
-                caso1.addEspecialidade(Especialidade.PEDIATRIA);
+                caso3.addEspecialidade(Especialidade.PEDIATRIA);
 
         repository.saveAll(Arrays.asList(caso1, caso2, caso3));
     }
