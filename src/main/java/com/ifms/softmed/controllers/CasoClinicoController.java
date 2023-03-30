@@ -1,5 +1,9 @@
 package com.ifms.softmed.controllers;
 
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,20 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 import com.ifms.softmed.services.impl.CasoClinicoServiceImpl;
 
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
-
-//@Api(tags = "SoftMed", description = "Ferramenta.")
 @RestController
 @RequestMapping("/casos-clinicos")
 public class CasoClinicoController {
-
-  // private final CasoClinicoService casoClinicoService;
-  // private final JWTUtil jwtUtil;
 
   @Autowired
   private CasoClinicoServiceImpl service;
@@ -31,15 +29,22 @@ public class CasoClinicoController {
     return ResponseEntity.ok().body(new CasoClinicoDTO(obj));
 
   }
-  /*
-   * @ApiOperation(value = "Consulta de Casos Clinicos", notes =
-   * "Recurso para consulta de Casos Clinicos", response = List.class)
-   * 
-   * @GetMapping(value = "/consultar")
-   * public ResponseEntity<List<CasoClinicoModelo>>
-   * consultarCasosClinicos(CasoClinicoModelo casos, HttpServletRequest request){
-   * return ResponseEntity.ok(casoClinicoService.consultarComParametros(casos));
-   * }
-   */
+
+  @GetMapping
+  public ResponseEntity<List<CasoClinicoDTO>> findAll(){
+    List<CasoClinicoModelo> list = service.findAll();
+    List<CasoClinicoDTO> listDTO = list.stream().map(obj -> new CasoClinicoDTO(obj)).collect(Collectors.toList());
+    return ResponseEntity.ok().body(listDTO);
+  }
+
+  /* 
+  @GetMapping(value =  "/{}")
+  public ResponseEntity<List<CasoClinicoDTO>> findByPorEspecialidade(@PathVariable Especialidade codEspecialidade){
+    List<CasoClinicoModelo> list = service.findByEspecialidade(codEspecialidade);
+    List<CasoClinicoDTO> listDto = list.stream().map(obj -> new CasoClinicoDTO(obj)).collect(Collectors.toList());
+    return ResponseEntity.ok().body(listDto);
+  }
+*/
+
 
 }
