@@ -13,7 +13,8 @@ public enum Especialidade {
     OFTALMOLOGIA(7, "OFTALMOLOGIA"),
     ANESTESIOLOGIA(8, "ANESTESIOLOGIA"),
     GINECOLOGIA(9, "GINECOLOGIA"),
-    PEDIATRIA(10, "PEDIATRIA");
+    PEDIATRIA(10, "PEDIATRIA"),
+    RANDOMICO(11,"RANDOMICO");
 
 
     private Integer codigoEspecialidade;
