@@ -1,8 +1,11 @@
 package com.ifms.softmed.domain.model;
 
+import java.util.stream.Collectors;
+
 import javax.persistence.Entity;
 
 import com.ifms.softmed.domain.enums.Perfil;
+import com.ifms.softmed.dto.AdministratorDTO;
 
 @Entity
 public class Administrator extends Pessoa {
@@ -21,6 +24,14 @@ public class Administrator extends Pessoa {
         addPerfil(Perfil.ADMIN);
     }
 
+    public Administrator(AdministratorDTO obj){
+         super();
+         this.id = obj.getId();
+         this.email = obj.getEmail();
+         this.senha = obj.getSenha();
+         this.perfils = obj.getPerfils().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+         this.dataCriacao = obj.getDataCriacao();
+    }
      
 
 

@@ -4,14 +4,14 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/*
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.ifms.softmed.domain.enums.Perfil;
 
-/* 
+
 public class UserSS implements UserDetails{
     
     private static final long serialVersionUID = 1L;
@@ -68,4 +68,3 @@ public class UserSS implements UserDetails{
 		return true;
 	}
 }
-*/

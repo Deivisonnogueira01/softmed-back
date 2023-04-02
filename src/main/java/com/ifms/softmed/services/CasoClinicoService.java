@@ -15,8 +15,6 @@ public interface CasoClinicoService {
 
    // CasoClinicoModelo findByEspecialidade(Especialidade especialidade);
 
-/*Criar uma DTO para se Comunicar com o Banco */
-/* E criar uma implementacao da interface do service para chamar os metodos */
 
 }
     

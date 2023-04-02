@@ -3,6 +3,7 @@ package com.ifms.softmed.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.enums.Especialidade;
@@ -21,9 +22,12 @@ public class DBService {
     @Autowired
     private PessoaRepository repository2;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public void instanciaDb() {
 
-        Administrator admin1 = new Administrator(01, "deivison.nogueira@live.com", "12345");
+        Administrator admin1 = new Administrator(null, "deivison.nogueira@live.com",encoder.encode("123456"));
         admin1.addPerfil(Perfil.ADMIN);
 
         CasoClinicoModelo caso1 = new CasoClinicoModelo(1,
