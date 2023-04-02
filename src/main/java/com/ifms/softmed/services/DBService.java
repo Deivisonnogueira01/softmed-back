@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.enums.Especialidade;
+import com.ifms.softmed.domain.enums.Perfil;
+import com.ifms.softmed.domain.model.Administrator;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
 import com.ifms.softmed.repositories.CasoClinicoRepository;
+import com.ifms.softmed.repositories.PessoaRepository;
 
 @Service
 public class DBService {
@@ -15,7 +18,13 @@ public class DBService {
     @Autowired
     private CasoClinicoRepository repository;
 
+    @Autowired
+    private PessoaRepository repository2;
+
     public void instanciaDb() {
+
+        Administrator admin1 = new Administrator(01, "deivison.nogueira@live.com", "12345");
+        admin1.addPerfil(Perfil.ADMIN);
 
         CasoClinicoModelo caso1 = new CasoClinicoModelo(1,
                 1,
@@ -140,8 +149,7 @@ public class DBService {
         "Nega tabagismo e etilismo. Sedentária. Casa de alvenaria. Sem animais de estimação");
         caso6.addEspecialidade(Especialidade.NEUROLOGIA); //TEP
 
-
-        CasoClinicoModelo caso7 = new CasoClinicoModelo(6,
+        CasoClinicoModelo caso7 = new CasoClinicoModelo(7,
         7,
         "Fernanda",
         55 ,
@@ -163,5 +171,7 @@ public class DBService {
 
 
         repository.saveAll(Arrays.asList(caso1, caso2, caso3, caso4, caso5, caso6, caso7));
+
+        repository2.saveAll(Arrays.asList(admin1));
     }
 }
