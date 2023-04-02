@@ -15,13 +15,11 @@
 	<name>softmed</name>
 	<description>Ferramenta Educacional</description>
 
-	<!--
+	
 	<properties>
 		<java.version>8</java.version>
-		<jwt.version>0.9.0</jwt.version>
-		<springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
 	</properties>
--->
+
 
 	<!-- Security -->
 
@@ -59,7 +57,6 @@
 			<version>0.7.0</version>
 		</dependency>
 	
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -71,7 +68,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 
 		<dependency>
 			<groupId>com.h2database</groupId>
