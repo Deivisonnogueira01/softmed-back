@@ -23,25 +23,23 @@ import com.ifms.softmed.services.impl.AdministratorServiceImpl;
 @RestController
 @RequestMapping(value = "/admin")
 public class AdministratorController {
-    
-    @Autowired
-    private AdministratorServiceImpl serviceImpl;
 
+  @Autowired
+  private AdministratorServiceImpl serviceImpl;
 
-    @GetMapping
-    public ResponseEntity<List<AdministratorDTO>> findAll(){
-      List<Administrator> list = serviceImpl.findAll();   
-      List<AdministratorDTO> listDTO = list.stream().map(obj -> new AdministratorDTO(obj)).collect(Collectors.toList());
-      return ResponseEntity.ok().body(listDTO);
-    }
+  @GetMapping
+  public ResponseEntity<List<AdministratorDTO>> findAll() {
+    List<Administrator> list = serviceImpl.findAll();
+    List<AdministratorDTO> listDTO = list.stream().map(obj -> new AdministratorDTO(obj)).collect(Collectors.toList());
+    return ResponseEntity.ok().body(listDTO);
+  }
 
-
-    @PreAuthorize("hasAnyRole('ADMIN')")
-	@PostMapping
-	public ResponseEntity<AdministratorDTO> create(@Valid @RequestBody AdministratorDTO objDTO) {
-		Administrator newObj = serviceImpl.create(objDTO);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-}
+  @PreAuthorize("hasAnyRole('ADMIN')")
+  @PostMapping
+  public ResponseEntity<AdministratorDTO> create(@Valid @RequestBody AdministratorDTO objDTO) {
+    Administrator newObj = serviceImpl.create(objDTO);
+    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+    return ResponseEntity.created(uri).build();
+  }
 
 }
