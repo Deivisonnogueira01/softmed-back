@@ -18,14 +18,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ifms.softmed.domain.model.Administrator;
 import com.ifms.softmed.dto.AdministratorDTO;
-import com.ifms.softmed.services.impl.AdministratorServiceImpl;
+import com.ifms.softmed.services.AdministratorService;
 
 @RestController
 @RequestMapping(value = "/admin")
 public class AdministratorController {
 
   @Autowired
-  private AdministratorServiceImpl serviceImpl;
+  private AdministratorService serviceImpl;
 
   @GetMapping
   public ResponseEntity<List<AdministratorDTO>> findAll() {
