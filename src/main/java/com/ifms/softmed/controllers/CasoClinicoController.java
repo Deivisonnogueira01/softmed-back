@@ -16,7 +16,7 @@ import com.ifms.softmed.dto.CasoClinicoDTO;
 import com.ifms.softmed.services.impl.CasoClinicoServiceImpl;
 
 @RestController
-@RequestMapping("/casos-clinicos")
+@RequestMapping(value ="/casos-clinicos")
 public class CasoClinicoController {
 
   @Autowired
@@ -24,7 +24,7 @@ public class CasoClinicoController {
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<CasoClinicoDTO> findById(@PathVariable Integer id) {
-    CasoClinicoModelo obj = this.service.findbyId(id);
+    CasoClinicoModelo obj = service.findbyId(id);
     return ResponseEntity.ok().body(new CasoClinicoDTO(obj));
 
   }
