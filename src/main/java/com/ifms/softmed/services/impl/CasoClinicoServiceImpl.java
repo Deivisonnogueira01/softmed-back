@@ -2,6 +2,7 @@ package com.ifms.softmed.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +31,10 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
         
     }
 
-   /*  @Override
-    public CasoClinicoModelo findByEspecialidade(Especialidade especialidade) {
+    @Override
+    public List<CasoClinicoModelo> findByEspecialidade(Especialidade especialidade) {
+        return repository.findByEspecialidade(especialidade);
+    }
 
-        Optional<CasoClinicoModelo> obj = repository.findByEspecialidade(especialidade);
-        return obj.orElse(null);
-
-    }*/
-
+  
 }

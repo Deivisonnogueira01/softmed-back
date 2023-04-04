@@ -16,7 +16,7 @@ public interface CasoClinicoService {
 
     CasoClinicoModelo findbyId(Integer id);
 
-   // CasoClinicoModelo findByEspecialidade(Especialidade especialidade);
+    List<CasoClinicoModelo> findByEspecialidade(Especialidade especialidade);
 
 
 }

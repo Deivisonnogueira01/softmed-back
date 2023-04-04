@@ -1,14 +1,10 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,11 +52,9 @@ public class CasoClinicoModelo implements Serializable{
 
     protected String historiaPsicossocial;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "ESPECIALIDADES")
-    protected Set<Integer> especialidades = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    protected Especialidade especialidade;
 
-    
     public CasoClinicoModelo(){
         super();
     }
@@ -69,7 +63,7 @@ public class CasoClinicoModelo implements Serializable{
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
             String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
-            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial
+            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial, Especialidade especialidade
             ) {
         this.casoClinicoId = casoClinicoId;
         this.numero = numero;
@@ -89,16 +83,17 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaPatologicaPregressa = historiaPatologicaPregressa;
         this.historiaFamiliar = historiaFamiliar;
         this.historiaPsicossocial = historiaPsicossocial;
+        this.especialidade = especialidade;
     }
 
     
-    public Set<Especialidade> getEspecialidade(){
-      return especialidades.stream().map(x -> Especialidade.toEspec(x)).collect(Collectors.toSet());
+    public Especialidade getTipoEspecialidade() {
+        return especialidade;
     }
 
-    public void addEspecialidade(Especialidade especialidade){{
-        this.especialidades.add(especialidade.getCodigoEspecialidade());
-    }}
+    public void setTipoEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
 
     public Integer getCasoClinicoId() {
         return casoClinicoId;

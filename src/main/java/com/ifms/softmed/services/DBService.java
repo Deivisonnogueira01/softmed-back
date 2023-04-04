@@ -48,8 +48,8 @@ public class DBService {
                                 "Não Há Registros", // IDA
                                 "Não Há Registros", /// HPP
                                 "SOMENTE O PAI POSSUI DIABETES", // HF
-                                "nao possui"); // HPS
-                caso1.addEspecialidade(Especialidade.CARDIOLOGIA);
+                                "nao possui",
+                                Especialidade.CARDIOLOGIA); // HPS
 
                 CasoClinicoModelo caso2 = new CasoClinicoModelo(2,
                                 2,
@@ -68,8 +68,8 @@ public class DBService {
                                 "Não Há Registros",
                                 "Não Há Registros",
                                 "Não Há Registros",
-                                "nao possui");
-                caso2.addEspecialidade(Especialidade.CLINICA_MEDICA);
+                                "nao possui",
+                                Especialidade.CLINICA_MEDICA);
 
                 CasoClinicoModelo caso3 = new CasoClinicoModelo(3,
                                 3,
@@ -88,8 +88,8 @@ public class DBService {
                                 "SEM CONTEUDO",
                                 "HISTORIA PATOLOGICA, AQUI",
                                 "SOMENTE O PAI POSSUI DIABETES",
-                                "nao possui");
-                caso3.addEspecialidade(Especialidade.PEDIATRIA);
+                                "nao possui",
+                                Especialidade.PEDIATRIA);
 
                 CasoClinicoModelo caso4 = new CasoClinicoModelo(4,
                                 4,
@@ -109,8 +109,8 @@ public class DBService {
                                 "Também alegou desconforto na região cervical, o qual não soube especificar. A paciente estava hidratada, eupneica, apirética, normotensa e normocárdica. A paciente apresentava notável emagrecimento.",
                                 "Não Registrado",
                                 "Não Registrado",
-                                "nao possui");
-                caso4.addEspecialidade(Especialidade.CARDIOLOGIA); // GOTA - HAS
+                                "nao possui",
+                                Especialidade.CARDIOLOGIA);
 
                 CasoClinicoModelo caso5 = new CasoClinicoModelo(5,
                                 5,
@@ -130,8 +130,8 @@ public class DBService {
                                 "Gerais: relata astenia, sudorese. Nega febre, prurido. ",
                                 "Nega hábitos medicamentosos. Sem antecedentes (pessoais ou patológicos) ",
                                 "Sem hábitos tabágicos, alcoólicos ou consumo de drogas.",
-                                "Não possui");
-                caso5.addEspecialidade(Especialidade.NEUROLOGIA); // MIASTEMIA
+                                "Não possui",
+                                Especialidade.CLINICA_MEDICA);
 
                 CasoClinicoModelo caso6 = new CasoClinicoModelo(6,
                                 6,
@@ -150,8 +150,8 @@ public class DBService {
                                 "Gerais: relata astenia, sudorese. Nega febre, prurido. ",
                                 "HAS, em uso de HCTZ e captopril. Nega DM e disfunção tireoidiana",
                                 "Mãe faleceu aos 63 anos com câncer colorretal. Pai era hipertenso e faleceu aos 70 anos, por IAM. Não sabe informar sobre os irmão.",
-                                "Nega tabagismo e etilismo. Sedentária. Casa de alvenaria. Sem animais de estimação");
-                caso6.addEspecialidade(Especialidade.NEUROLOGIA); // TEP
+                                "Nega tabagismo e etilismo. Sedentária. Casa de alvenaria. Sem animais de estimação",
+                                Especialidade.CLINICA_MEDICA);
 
                 CasoClinicoModelo caso7 = new CasoClinicoModelo(7,
                                 7,
@@ -170,8 +170,8 @@ public class DBService {
                                 "Gerais: relata astenia, sudorese. Nega febre, prurido",
                                 "HAS, em uso de HCTZ e captopril. Nega DM e disfunção tireoidiana",
                                 "Ex-tabagista (fumou dos 20 aos 52 anos, carga tabágica de 32 anos-maço). Nega etilismo. Sedentário. Casa de alvenaria. Dois cães e um gato.",
-                                "Nega tabagismo e etilismo. Sedentária. Casa de alvenaria. Sem animais de estimação");
-                caso7.addEspecialidade(Especialidade.CLINICA_MEDICA); // OBESIDADE
+                                "Nega tabagismo e etilismo. Sedentária. Casa de alvenaria. Sem animais de estimação",
+                                Especialidade.CLINICA_MEDICA);
 
                 repository.saveAll(Arrays.asList(caso1, caso2, caso3, caso4, caso5, caso6, caso7));
 

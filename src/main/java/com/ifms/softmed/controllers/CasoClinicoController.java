@@ -1,7 +1,6 @@
 package com.ifms.softmed.controllers;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +36,11 @@ public class CasoClinicoController {
     return ResponseEntity.ok().body(listDTO);
   }
 
-  /* 
-  @GetMapping(value =  "/{}")
-  public ResponseEntity<List<CasoClinicoDTO>> findByPorEspecialidade(@PathVariable Especialidade codEspecialidade){
-    List<CasoClinicoModelo> list = service.findByEspecialidade(codEspecialidade);
-    List<CasoClinicoDTO> listDto = list.stream().map(obj -> new CasoClinicoDTO(obj)).collect(Collectors.toList());
-    return ResponseEntity.ok().body(listDto);
+
+  @GetMapping("/espec/{especialidade}")
+  public List<CasoClinicoModelo> getFindByEspecialidade(@PathVariable Especialidade especialidade){
+     return service.findByEspecialidade(especialidade);
   }
-*/
 
 
 }

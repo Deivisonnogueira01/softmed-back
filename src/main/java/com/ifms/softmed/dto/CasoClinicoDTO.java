@@ -1,17 +1,13 @@
 package com.ifms.softmed.dto;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
 
-
 public class CasoClinicoDTO implements Serializable {
-    
- private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     protected Integer casoClinicoId;
 
@@ -49,13 +45,13 @@ public class CasoClinicoDTO implements Serializable {
 
     protected String historiaPsicossocial;
 
-    protected Set<Integer> especialidades = new HashSet<>();
+    protected Especialidade especialidade;
 
     public CasoClinicoDTO() {
         super();
     }
 
-    public CasoClinicoDTO(CasoClinicoModelo obj){
+    public CasoClinicoDTO(CasoClinicoModelo obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
         this.numero = obj.getNumero();
         this.nomePaciente = obj.getNomePaciente();
@@ -63,30 +59,27 @@ public class CasoClinicoDTO implements Serializable {
         this.alturaPaciente = obj.getAlturaPaciente();
         this.pesoPaciente = obj.getPesoPaciente();
         this.sexoPaciente = obj.getSexoPaciente();
-        this.corPaciente =  obj.getCorPaciente();
+        this.corPaciente = obj.getCorPaciente();
         this.profissaoPaciente = obj.getProfissaoPaciente();
         this.religiaoPaciente = obj.getReligiaoPaciente();
         this.naturalPaciente = obj.getNaturalPaciente();
-        this.residentePaciente =  obj.getResidentePaciente();
-        this.historiaDoencaAtual =  obj.getHistoriaDoencaAtual();
-        this.queixaPrincipal =  obj.getQueixaPrincipal();
+        this.residentePaciente = obj.getResidentePaciente();
+        this.historiaDoencaAtual = obj.getHistoriaDoencaAtual();
+        this.queixaPrincipal = obj.getQueixaPrincipal();
         this.interrogatorioDiversosAparelhos = obj.getInterrogatorioDiversosAparelhos();
         this.historiaPatologicaPregressa = obj.getHistoriaPatologicaPregressa();
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
-        this.especialidades = obj.getEspecialidade().stream().map(x -> x.getCodigoEspecialidade()).collect(Collectors.toSet());
+        this.especialidade = obj.getTipoEspecialidade();
     }
 
+    public Especialidade getTipoEspecialidade() {
+        return especialidade;
+    }
 
-    public Set<Especialidade> getEspecialidade(){
-        return especialidades.stream().map(x -> Especialidade.toEspec(x)).collect(Collectors.toSet());
-      }
-  
-      public void addEspecialidade(Especialidade especialidade){{
-          this.especialidades.add(especialidade.getCodigoEspecialidade());
-      }}
-
-   
+    public void setTipoEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
 
     public Integer getCasoClinicoId() {
         return casoClinicoId;
@@ -231,7 +224,5 @@ public class CasoClinicoDTO implements Serializable {
     public void setHistoriaPsicossocial(String historiaPsicossocial) {
         this.historiaPsicossocial = historiaPsicossocial;
     }
-
-    
 
 }
