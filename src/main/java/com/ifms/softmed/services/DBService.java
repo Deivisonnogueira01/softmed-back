@@ -49,7 +49,7 @@ public class DBService {
                                 "Não Há Registros", /// HPP
                                 "SOMENTE O PAI POSSUI DIABETES", // HF
                                 "nao possui",
-                                Especialidade.CARDIOLOGIA); // HPS
+                                Especialidade.MEDICINA_DA_FAMILIA); // HPS
 
                 CasoClinicoModelo caso2 = new CasoClinicoModelo(2,
                                 2,
@@ -110,7 +110,7 @@ public class DBService {
                                 "Não Registrado",
                                 "Não Registrado",
                                 "nao possui",
-                                Especialidade.CARDIOLOGIA);
+                                Especialidade.MEDICINA_DA_FAMILIA);
 
                 CasoClinicoModelo caso5 = new CasoClinicoModelo(5,
                                 5,
