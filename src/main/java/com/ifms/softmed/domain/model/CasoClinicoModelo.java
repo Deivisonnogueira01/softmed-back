@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.ifms.softmed.domain.enums.Especialidade;
+import com.ifms.softmed.dto.CasoClinicoDTO;
 
 @Entity
 public class CasoClinicoModelo implements Serializable{
@@ -87,6 +88,29 @@ public class CasoClinicoModelo implements Serializable{
     }
 
     
+    public CasoClinicoModelo(CasoClinicoDTO obj) {
+        super();
+        this.casoClinicoId = obj.getCasoClinicoId();
+        this.numero = obj.getNumero();
+        this.nomePaciente = obj.getNomePaciente();
+        this.idadePaciente = obj.getIdadePaciente();
+        this.alturaPaciente = obj.getAlturaPaciente();
+        this.pesoPaciente = obj.getPesoPaciente();
+        this.sexoPaciente = obj.getSexoPaciente();
+        this.corPaciente = obj.getCorPaciente();
+        this.profissaoPaciente = obj.getProfissaoPaciente();
+        this.religiaoPaciente = obj.getReligiaoPaciente();
+        this.naturalPaciente = obj.getNaturalPaciente();
+        this.residentePaciente = obj.getResidentePaciente();
+        this.historiaDoencaAtual = obj.getHistoriaDoencaAtual();
+        this.queixaPrincipal = obj.getQueixaPrincipal();
+        this.interrogatorioDiversosAparelhos = obj.getInterrogatorioDiversosAparelhos();
+        this.historiaPatologicaPregressa = obj.getHistoriaPatologicaPregressa();
+        this.historiaFamiliar = obj.getHistoriaFamiliar();
+        this.historiaPsicossocial = obj.getHistoriaPsicossocial();
+        this.especialidade = obj.getTipoEspecialidade();
+    }
+
     public Especialidade getTipoEspecialidade() {
         return especialidade;
     }

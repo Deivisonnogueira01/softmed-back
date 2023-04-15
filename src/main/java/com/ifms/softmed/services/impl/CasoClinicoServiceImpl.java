@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.dto.CasoClinicoDTO;
 import com.ifms.softmed.repositories.CasoClinicoRepository;
 import com.ifms.softmed.services.CasoClinicoService;
 
@@ -34,6 +35,14 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
     @Override
     public List<CasoClinicoModelo> findByEspecialidade(Especialidade especialidade) {
         return repository.findByEspecialidade(especialidade);
+    }
+
+    @Override
+    public CasoClinicoModelo create(CasoClinicoDTO casoClinicoDTO) {
+        
+        casoClinicoDTO.setCasoClinicoId(null);
+        CasoClinicoModelo newObj = new CasoClinicoModelo(casoClinicoDTO);
+       return repository.save(newObj);
     }
 
   
