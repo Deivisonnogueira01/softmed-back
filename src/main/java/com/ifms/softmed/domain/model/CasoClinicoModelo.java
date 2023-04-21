@@ -53,6 +53,8 @@ public class CasoClinicoModelo implements Serializable{
 
     protected String historiaPsicossocial;
 
+    protected String exameFisico;
+
     @Enumerated(EnumType.STRING)
     protected Especialidade especialidade;
 
@@ -64,8 +66,8 @@ public class CasoClinicoModelo implements Serializable{
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
             String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
-            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial, Especialidade especialidade
-            ) {
+            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial, Especialidade especialidade,
+            String exameFisico) {
         this.casoClinicoId = casoClinicoId;
         this.numero = numero;
         this.nomePaciente = nomePaciente;
@@ -85,6 +87,7 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaFamiliar = historiaFamiliar;
         this.historiaPsicossocial = historiaPsicossocial;
         this.especialidade = especialidade;
+        this.exameFisico = exameFisico;
     }
 
     
@@ -109,6 +112,7 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
+        this.exameFisico = obj.getExameFisico();
     }
 
     public Especialidade getTipoEspecialidade() {
@@ -261,6 +265,14 @@ public class CasoClinicoModelo implements Serializable{
 
     public void setHistoriaPsicossocial(String historiaPsicossocial) {
         this.historiaPsicossocial = historiaPsicossocial;
+    }
+
+    public String getExameFisico() {
+        return exameFisico;
+    }
+
+    public void setExameFisico(String exameFisico) {
+        this.exameFisico = exameFisico;
     }
 
 }
