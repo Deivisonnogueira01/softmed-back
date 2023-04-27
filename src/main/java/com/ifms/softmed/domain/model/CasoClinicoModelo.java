@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.ifms.softmed.domain.enums.Especialidade;
+import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 
 @Entity
@@ -58,6 +59,9 @@ public class CasoClinicoModelo implements Serializable{
     @Enumerated(EnumType.STRING)
     protected Especialidade especialidade;
 
+    @Enumerated(EnumType.STRING)
+    protected Patologia patologia;
+
     public CasoClinicoModelo(){
         super();
     }
@@ -67,7 +71,7 @@ public class CasoClinicoModelo implements Serializable{
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
             String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
             String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial, Especialidade especialidade,
-            String exameFisico) {
+            String exameFisico, Patologia patologia) {
         this.casoClinicoId = casoClinicoId;
         this.numero = numero;
         this.nomePaciente = nomePaciente;
@@ -88,6 +92,7 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaPsicossocial = historiaPsicossocial;
         this.especialidade = especialidade;
         this.exameFisico = exameFisico;
+        this.patologia = patologia;
     }
 
     
@@ -113,14 +118,23 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.exameFisico = obj.getExameFisico();
+        this.patologia = obj.getPatologia();
     }
 
     public Especialidade getTipoEspecialidade() {
         return especialidade;
     }
 
+    public Patologia getPatologia(){
+        return patologia;
+    }
+
     public void setTipoEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public void setPatologia(Patologia patologia){
+        this.patologia = patologia;
     }
 
     public Integer getCasoClinicoId() {
@@ -274,5 +288,7 @@ public class CasoClinicoModelo implements Serializable{
     public void setExameFisico(String exameFisico) {
         this.exameFisico = exameFisico;
     }
+
+
 
 }

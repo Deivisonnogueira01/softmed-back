@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.enums.Especialidade;
+import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.enums.Perfil;
 import com.ifms.softmed.domain.model.Administrator;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
@@ -50,7 +51,8 @@ public class DBService {
                                 "SOMENTE O PAI POSSUI DIABETES", // HF
                                 "nao possui",
                                 Especialidade.MEDICINA_DA_FAMILIA,
-                                "Exame");
+                                "Exame",
+                                Patologia.GOTA);
                 
         
                 repository.saveAll(Arrays.asList(caso1));
