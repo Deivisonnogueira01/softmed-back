@@ -32,7 +32,7 @@ public class DBService {
                                 encoder.encode("123"));
                 admin1.addPerfil(Perfil.ADMIN);
 
-                CasoClinicoModelo caso1 = new CasoClinicoModelo(1,
+               /*  CasoClinicoModelo caso1 = new CasoClinicoModelo(1,
                                 1,
                                 "Joao",
                                 22,
@@ -51,11 +51,10 @@ public class DBService {
                                 "SOMENTE O PAI POSSUI DIABETES", // HF
                                 "nao possui",
                                 Especialidade.MEDICINA_DA_FAMILIA,
-                                "Exame",
-                                Patologia.GOTA);
+                                Patologia.GOTA);*/
                 
         
-                repository.saveAll(Arrays.asList(caso1));
+               // repository.saveAll(Arrays.asList(caso1));
 
                 repository2.saveAll(Arrays.asList(admin1));
         }

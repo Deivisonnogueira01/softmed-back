@@ -1,6 +1,7 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,14 +9,17 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 
 @Entity
-public class CasoClinicoModelo implements Serializable{
-         
+public class CasoClinicoModelo implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer casoClinicoId;
@@ -34,13 +38,13 @@ public class CasoClinicoModelo implements Serializable{
 
     protected String corPaciente;
 
-    protected String profissaoPaciente;
+    protected String profissaoPaciente; //
 
-    protected String religiaoPaciente;
+    protected String religiaoPaciente; //
 
-    protected String naturalPaciente;
+    protected String naturalPaciente; //
 
-    protected String residentePaciente;
+    protected String residentePaciente; //
 
     protected String historiaDoencaAtual;
 
@@ -54,15 +58,37 @@ public class CasoClinicoModelo implements Serializable{
 
     protected String historiaPsicossocial;
 
-    protected String exameFisico;
-
     @Enumerated(EnumType.STRING)
     protected Especialidade especialidade;
 
     @Enumerated(EnumType.STRING)
     protected Patologia patologia;
 
-    public CasoClinicoModelo(){
+    @ManyToMany
+    @JoinTable(name = "exames_sorolab_do_caso",
+    joinColumns = @JoinColumn(name = "caso_clinico_id"),
+    inverseJoinColumns = @JoinColumn(name = "exame_soro_labs_id"))
+    private List<ExamesSoroLab> examesSoroLabs;
+
+    @ManyToMany
+    @JoinTable(name = "exames_fisicos_do_caso",
+    joinColumns = @JoinColumn(name = "caso_clinico_id"),
+    inverseJoinColumns = @JoinColumn(name = "exame_fisicos_id"))
+    private List<ExamesFisicos> examesFisicos;
+
+    @ManyToMany
+    @JoinTable(name = "exames_imagem_do_caso",
+    joinColumns = @JoinColumn(name = "caso_clinico_id"),
+    inverseJoinColumns = @JoinColumn(name = "exame_imagem_id"))
+    private List<ExamesImagem> examesImagems;
+
+    @ManyToMany
+    @JoinTable(name = "testes_farmacologico_do_caso",
+    joinColumns = @JoinColumn(name = "caso_clinico_id"),
+    inverseJoinColumns = @JoinColumn(name = "teste_farmacologico_id"))
+    private List<TestesFarmacologicos> testesFarmacologicos;
+
+    public CasoClinicoModelo() {
         super();
     }
 
@@ -70,8 +96,11 @@ public class CasoClinicoModelo implements Serializable{
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
             String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
-            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial, Especialidade especialidade,
-            String exameFisico, Patologia patologia) {
+            String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial,
+            Especialidade especialidade,
+            Patologia patologia, List<ExamesSoroLab> examesSoroLogicoLaboratoriais,
+            List<ExamesFisicos> examesFisicos, List<ExamesImagem> examesImagems,
+            List<TestesFarmacologicos> testesFarmacologicos) {
         this.casoClinicoId = casoClinicoId;
         this.numero = numero;
         this.nomePaciente = nomePaciente;
@@ -91,11 +120,13 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaFamiliar = historiaFamiliar;
         this.historiaPsicossocial = historiaPsicossocial;
         this.especialidade = especialidade;
-        this.exameFisico = exameFisico;
         this.patologia = patologia;
+        this.examesSoroLabs = examesSoroLogicoLaboratoriais;
+        this.examesFisicos = examesFisicos;
+        this.examesImagems = examesImagems;
+        this.testesFarmacologicos = testesFarmacologicos;
     }
 
-    
     public CasoClinicoModelo(CasoClinicoDTO obj) {
         super();
         this.casoClinicoId = obj.getCasoClinicoId();
@@ -117,7 +148,6 @@ public class CasoClinicoModelo implements Serializable{
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
-        this.exameFisico = obj.getExameFisico();
         this.patologia = obj.getPatologia();
     }
 
@@ -125,7 +155,7 @@ public class CasoClinicoModelo implements Serializable{
         return especialidade;
     }
 
-    public Patologia getPatologia(){
+    public Patologia getPatologia() {
         return patologia;
     }
 
@@ -133,7 +163,7 @@ public class CasoClinicoModelo implements Serializable{
         this.especialidade = especialidade;
     }
 
-    public void setPatologia(Patologia patologia){
+    public void setPatologia(Patologia patologia) {
         this.patologia = patologia;
     }
 
@@ -280,15 +310,5 @@ public class CasoClinicoModelo implements Serializable{
     public void setHistoriaPsicossocial(String historiaPsicossocial) {
         this.historiaPsicossocial = historiaPsicossocial;
     }
-
-    public String getExameFisico() {
-        return exameFisico;
-    }
-
-    public void setExameFisico(String exameFisico) {
-        this.exameFisico = exameFisico;
-    }
-
-
 
 }
