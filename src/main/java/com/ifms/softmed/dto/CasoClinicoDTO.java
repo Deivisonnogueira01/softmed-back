@@ -50,7 +50,6 @@ public class CasoClinicoDTO implements Serializable {
 
     protected Patologia patologia;
 
-    // protected String exameFisico;
 
     public CasoClinicoDTO() {
         super();
@@ -77,6 +76,8 @@ public class CasoClinicoDTO implements Serializable {
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
+
+        
     }
 
     public Especialidade getTipoEspecialidade() {
@@ -238,5 +239,8 @@ public class CasoClinicoDTO implements Serializable {
     public void setHistoriaPsicossocial(String historiaPsicossocial) {
         this.historiaPsicossocial = historiaPsicossocial;
     }
+
+
+    
 
 }

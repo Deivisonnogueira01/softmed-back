@@ -1,32 +1,37 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
 public class ExamesImagem implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idExameImagem;
+  
+    private String examesCorretos;
 
-    @ElementCollection
-    private List<String> examesCorretos;
+    private String examesIncorretos;
 
-    @ElementCollection
-    private List<String> examesIncorretos;
+    @ManyToMany
+    @JoinTable(name ="exame_image_caso",
+    joinColumns = @JoinColumn(name = "exame_image_id"),
+    inverseJoinColumns = @JoinColumn(name = "caso_cli_img_id"))
+    private List<CasoClinicoModelo> casoClinicoEIMG = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "examesImagems")
-    private List<CasoClinicoModelo> casoClinicoModelos;
-
-    public ExamesImagem(Integer idExameImagem, List<String> examesCorretos, List<String> examesIncorretos) {
+    public ExamesImagem(Integer idExameImagem, String examesCorretos, String examesIncorretos) {
         this.idExameImagem = idExameImagem;
         this.examesCorretos = examesCorretos;
         this.examesIncorretos = examesIncorretos;
@@ -40,29 +45,34 @@ public class ExamesImagem implements Serializable {
         this.idExameImagem = idExameImagem;
     }
 
-    public List<String> getExamesCorretos() {
+    public String getExamesCorretos() {
         return examesCorretos;
     }
 
-    public void setExamesCorretos(List<String> examesCorretos) {
+    public void setExamesCorretos(String examesCorretos) {
         this.examesCorretos = examesCorretos;
     }
 
-    public List<String> getExamesIncorretos() {
+    public String getExamesIncorretos() {
         return examesIncorretos;
     }
 
-    public void setExamesIncorretos(List<String> examesIncorretos) {
+    public void setExamesIncorretos(String examesIncorretos) {
         this.examesIncorretos = examesIncorretos;
     }
 
- /*    public List<CasoClinicoModelo> getCasoClinicoModelos() {
-        return casoClinicoModelos;
+    public List<CasoClinicoModelo> getCasoClinicoEIMG() {
+        return casoClinicoEIMG;
     }
 
-    public void setCasoClinicoModelos(List<CasoClinicoModelo> casoClinicoModelos) {
-        this.casoClinicoModelos = casoClinicoModelos;
-    }*/
+    public void setCasoClinicoEIMG(List<CasoClinicoModelo> casoClinicoEIMG) {
+        this.casoClinicoEIMG = casoClinicoEIMG;
+    }
+ 
+    
+   
+
+ 
 
     
 }

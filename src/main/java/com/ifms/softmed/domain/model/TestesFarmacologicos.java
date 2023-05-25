@@ -1,33 +1,40 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
 public class TestesFarmacologicos implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTestes;
 
-    @ElementCollection
-    private List<String> testeCorreto;
+   
+    private String testeCorreto;
 
-    @ElementCollection
-    private List<String> testesIncorretos;
+  
+    private String testesIncorretos;
 
-    @ManyToMany(mappedBy = "testesFarmacologicos")
-    private List<CasoClinicoModelo> casoClinicoModelos;
+    @ManyToMany
+    @JoinTable(name = "teste_de_caso",
+    joinColumns = @JoinColumn(name = "teste_id"),
+    inverseJoinColumns = @JoinColumn(name = "caso_farm_id"))
+    private List<CasoClinicoModelo> casoCliFarm = new ArrayList<>();
 
     
-    public TestesFarmacologicos(Integer idTestes, List<String> testeCorreto, List<String> testesIncorretos) {
+    public TestesFarmacologicos(Integer idTestes, String testeCorreto, String testesIncorretos) {
         this.idTestes = idTestes;
         this.testeCorreto = testeCorreto;
         this.testesIncorretos = testesIncorretos;
@@ -41,20 +48,28 @@ public class TestesFarmacologicos implements Serializable {
         this.idTestes = idTestes;
     }
 
-    public List<String> getTesteCorreto() {
+    public String getTesteCorreto() {
         return testeCorreto;
     }
 
-    public void setTesteCorreto(List<String> testeCorreto) {
+    public void setTesteCorreto(String testeCorreto) {
         this.testeCorreto = testeCorreto;
     }
 
-    public List<String> getTestesIncorretos() {
+    public String getTestesIncorretos() {
         return testesIncorretos;
     }
 
-    public void setTestesIncorretos(List<String> testesIncorretos) {
+    public void setTestesIncorretos(String testesIncorretos) {
         this.testesIncorretos = testesIncorretos;
+    }
+
+    public List<CasoClinicoModelo> getCasoCliFarm() {
+        return casoCliFarm;
+    }
+
+    public void setCasoCliFarm(List<CasoClinicoModelo> casoCliFarm) {
+        this.casoCliFarm = casoCliFarm;
     }
 
 
