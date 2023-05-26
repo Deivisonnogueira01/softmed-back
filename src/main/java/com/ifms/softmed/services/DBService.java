@@ -11,17 +11,22 @@ import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.enums.Perfil;
 import com.ifms.softmed.domain.model.Administrator;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.domain.model.ExamesFisicos;
 import com.ifms.softmed.repositories.CasoClinicoRepository;
+import com.ifms.softmed.repositories.ExameFisicoRepository;
 import com.ifms.softmed.repositories.PessoaRepository;
 
 @Service
 public class DBService {
 
         @Autowired
-        private CasoClinicoRepository repository;
+        private CasoClinicoRepository casoClinicoRepository;
 
         @Autowired
         private PessoaRepository repository2;
+
+        @Autowired
+        private ExameFisicoRepository exameFisicoRepository;
 
         @Autowired
         private BCryptPasswordEncoder encoder;
@@ -32,7 +37,7 @@ public class DBService {
                                 encoder.encode("123"));
                 admin1.addPerfil(Perfil.ADMIN);
 
-               /*  CasoClinicoModelo caso1 = new CasoClinicoModelo(1,
+                 CasoClinicoModelo caso1 = new CasoClinicoModelo(null,
                                 1,
                                 "Joao",
                                 22,
@@ -51,11 +56,19 @@ public class DBService {
                                 "SOMENTE O PAI POSSUI DIABETES", // HF
                                 "nao possui",
                                 Especialidade.MEDICINA_DA_FAMILIA,
-                                Patologia.GOTA);*/
-                
-        
-               // repository.saveAll(Arrays.asList(caso1));
+                                Patologia.GOTA);
 
+                ExamesFisicos examesFisicos = new ExamesFisicos(null, "ExCorretoFisico", "ExIncorretoFisico");
+                ExamesFisicos examesFisicos2 = new ExamesFisicos(null, "ExCorretoFisico", "ExIncorretoFisico");
+
+                caso1.getExamesFisicos().addAll(Arrays.asList(examesFisicos, examesFisicos2));
+                  
+                examesFisicos.getCasoCliExFisico().addAll(Arrays.asList(caso1));
+                examesFisicos2.getCasoCliExFisico().addAll(Arrays.asList(caso1));
+
+                casoClinicoRepository.saveAll(Arrays.asList(caso1));
+                exameFisicoRepository.saveAll(Arrays.asList(examesFisicos,examesFisicos2));
+                
                 repository2.saveAll(Arrays.asList(admin1));
         }
 }

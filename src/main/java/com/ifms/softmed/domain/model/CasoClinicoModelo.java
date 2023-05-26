@@ -77,8 +77,6 @@ public class CasoClinicoModelo implements Serializable {
     @ManyToMany(mappedBy = "casoCliFarm")
     private List<TestesFarmacologicos> testesFarmacologicos = new ArrayList<>();
 
-    // Mesmo Nome
-    // ou nome Diferente no nome da lISTA DE casosClinicos?
 
     public CasoClinicoModelo() {
     }
