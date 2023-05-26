@@ -31,6 +31,10 @@ public class ExamesImagem implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "caso_cli_img_id"))
     private List<CasoClinicoModelo> casoClinicoEIMG = new ArrayList<>();
 
+    public ExamesImagem(){
+        
+    }
+
     public ExamesImagem(Integer idExameImagem, String examesCorretos, String examesIncorretos) {
         this.idExameImagem = idExameImagem;
         this.examesCorretos = examesCorretos;

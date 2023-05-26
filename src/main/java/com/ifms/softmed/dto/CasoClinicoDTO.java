@@ -1,10 +1,13 @@
 package com.ifms.softmed.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.domain.model.ExamesFisicos;
 
 public class CasoClinicoDTO implements Serializable {
 
@@ -50,6 +53,8 @@ public class CasoClinicoDTO implements Serializable {
 
     protected Patologia patologia;
 
+    private List<ExamesFisicos> examesFisicos = new ArrayList<>();
+
 
     public CasoClinicoDTO() {
         super();
@@ -76,8 +81,17 @@ public class CasoClinicoDTO implements Serializable {
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
+      // this.examesFisicos = obj.getExamesFisicos();
 
         
+    }
+
+    public List<ExamesFisicos> getExamesFisicos() {
+        return examesFisicos;
+    }
+
+    public void setExamesFisicos(List<ExamesFisicos> examesFisicos) {
+        this.examesFisicos = examesFisicos;
     }
 
     public Especialidade getTipoEspecialidade() {

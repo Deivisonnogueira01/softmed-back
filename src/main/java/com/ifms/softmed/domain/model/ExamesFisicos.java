@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 public class ExamesFisicos implements Serializable{
     
@@ -30,6 +32,10 @@ public class ExamesFisicos implements Serializable{
     joinColumns = @JoinColumn(name ="caso_cli_id"),
     inverseJoinColumns = @JoinColumn(name ="exame_fi_id"))
     private List<CasoClinicoModelo> casoCliExFisico = new ArrayList<>();
+
+    public ExamesFisicos(){
+
+    }
 
     public ExamesFisicos(Integer idExame, String examesCorretos, String examesIncorretos) {
         this.idExame = idExame;

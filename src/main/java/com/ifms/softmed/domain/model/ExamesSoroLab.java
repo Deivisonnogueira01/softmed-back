@@ -31,6 +31,10 @@ public class ExamesSoroLab implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "caso_cli_id"))
     private List<CasoClinicoModelo> casoClinicoModelos = new ArrayList<>();
 
+    public ExamesSoroLab(){
+        
+    }
+
     public ExamesSoroLab(Integer idExamesSorologicoLaboratoriais, String exameCorretos,
             String exameIncorretos) {
         this.idExamesSorologicoLaboratoriais = idExamesSorologicoLaboratoriais;

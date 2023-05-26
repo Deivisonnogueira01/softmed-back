@@ -33,6 +33,9 @@ public class TestesFarmacologicos implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "caso_farm_id"))
     private List<CasoClinicoModelo> casoCliFarm = new ArrayList<>();
 
+    public TestesFarmacologicos(){
+        
+    }
     
     public TestesFarmacologicos(Integer idTestes, String testeCorreto, String testesIncorretos) {
         this.idTestes = idTestes;

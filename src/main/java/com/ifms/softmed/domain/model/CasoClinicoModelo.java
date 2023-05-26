@@ -133,6 +133,7 @@ public class CasoClinicoModelo implements Serializable {
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
+      //  this.examesFisicos = obj.getCa();
 
     }
 
