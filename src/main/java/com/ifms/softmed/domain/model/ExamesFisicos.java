@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 @Entity
 public class ExamesFisicos implements Serializable{
     

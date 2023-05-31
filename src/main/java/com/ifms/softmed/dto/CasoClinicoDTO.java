@@ -3,12 +3,20 @@ package com.ifms.softmed.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
 import com.ifms.softmed.domain.model.ExamesFisicos;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class CasoClinicoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,12 +61,13 @@ public class CasoClinicoDTO implements Serializable {
 
     protected Patologia patologia;
 
-    private List<ExamesFisicos> examesFisicos = new ArrayList<>();
+    private List<ExamesSoroLabDTO> soroLabDTOs = new ArrayList<>();
 
+    private List<ExamesImagemDTO> imagemDTOs = new ArrayList<>();
 
-    public CasoClinicoDTO() {
-        super();
-    }
+    private List<ExameFisicosDTO> exameFisicosDTOs = new ArrayList<>();
+
+    private List<TestesFarmacologicosDTO> testesDTO = new ArrayList<>();
 
     public CasoClinicoDTO(CasoClinicoModelo obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
@@ -80,181 +89,44 @@ public class CasoClinicoDTO implements Serializable {
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
-        this.patologia = obj.getPatologia();
-      // this.examesFisicos = obj.getExamesFisicos();
+        this.patologia = obj.getPatologia(); //extrair daqui
 
-        
-    }
+        if(obj.getExamesSoroLabs() != null){
+            List<ExamesSoroLabDTO> examesSoroLabDTOs = obj.getExamesSoroLabs()
+            .stream()
+            .map(examesSoroLab -> new ExamesSoroLabDTO())
+            .collect(Collectors.toList());
+            this.soroLabDTOs = examesSoroLabDTOs;
+        }
 
-    public List<ExamesFisicos> getExamesFisicos() {
-        return examesFisicos;
-    }
+        if(obj.getExamesImagems() != null){
+            List<ExamesImagemDTO> examesImagemDTOs = obj.getExamesImagems()
+            .stream()
+            .map(examesImg -> new ExamesImagemDTO())
+            .collect(Collectors.toList());
+            this.imagemDTOs = examesImagemDTOs;
+        }
 
-    public void setExamesFisicos(List<ExamesFisicos> examesFisicos) {
-        this.examesFisicos = examesFisicos;
-    }
+        if(obj.getExamesFisicos() != null){
+            List<ExameFisicosDTO> examesDTO = obj.getExamesFisicos()
+            .stream()
+            .map(examesFisicos -> new ExameFisicosDTO(examesFisicos)) //
+            .collect(Collectors.toList());
+            this.exameFisicosDTOs = examesDTO;
+        }
+
+        if(obj.getTestesFarmacologicos() != null){
+            List<TestesFarmacologicosDTO> testesFarmaDTO = obj.getTestesFarmacologicos()
+            .stream()
+            .map(testesFarma -> new TestesFarmacologicosDTO())
+            .collect(Collectors.toList());
+            this.testesDTO = testesFarmaDTO;
+        }
+       
+    } 
 
     public Especialidade getTipoEspecialidade() {
         return especialidade;
     }
-
-    public Patologia getPatologia() {
-        return patologia;
-    }
-
-    public void setTipoEspecialidade(Especialidade especialidade) {
-        this.especialidade = especialidade;
-    }
-
-    public void setPatologia(Patologia patologia) {
-        this.patologia = patologia;
-    }
-
-    public Integer getCasoClinicoId() {
-        return casoClinicoId;
-    }
-
-    public void setCasoClinicoId(Integer casoClinicoId) {
-        this.casoClinicoId = casoClinicoId;
-    }
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public String getNomePaciente() {
-        return nomePaciente;
-    }
-
-    public void setNomePaciente(String nomePaciente) {
-        this.nomePaciente = nomePaciente;
-    }
-
-    public Integer getIdadePaciente() {
-        return idadePaciente;
-    }
-
-    public void setIdadePaciente(Integer idadePaciente) {
-        this.idadePaciente = idadePaciente;
-    }
-
-    public Double getAlturaPaciente() {
-        return alturaPaciente;
-    }
-
-    public void setAlturaPaciente(Double alturaPaciente) {
-        this.alturaPaciente = alturaPaciente;
-    }
-
-    public Double getPesoPaciente() {
-        return pesoPaciente;
-    }
-
-    public void setPesoPaciente(Double pesoPaciente) {
-        this.pesoPaciente = pesoPaciente;
-    }
-
-    public String getSexoPaciente() {
-        return sexoPaciente;
-    }
-
-    public void setSexoPaciente(String sexoPaciente) {
-        this.sexoPaciente = sexoPaciente;
-    }
-
-    public String getCorPaciente() {
-        return corPaciente;
-    }
-
-    public void setCorPaciente(String corPaciente) {
-        this.corPaciente = corPaciente;
-    }
-
-    public String getProfissaoPaciente() {
-        return profissaoPaciente;
-    }
-
-    public void setProfissaoPaciente(String profissaoPaciente) {
-        this.profissaoPaciente = profissaoPaciente;
-    }
-
-    public String getReligiaoPaciente() {
-        return religiaoPaciente;
-    }
-
-    public void setReligiaoPaciente(String religiaoPaciente) {
-        this.religiaoPaciente = religiaoPaciente;
-    }
-
-    public String getNaturalPaciente() {
-        return naturalPaciente;
-    }
-
-    public void setNaturalPaciente(String naturalPaciente) {
-        this.naturalPaciente = naturalPaciente;
-    }
-
-    public String getResidentePaciente() {
-        return residentePaciente;
-    }
-
-    public void setResidentePaciente(String residentePaciente) {
-        this.residentePaciente = residentePaciente;
-    }
-
-    public String getHistoriaDoencaAtual() {
-        return historiaDoencaAtual;
-    }
-
-    public void setHistoriaDoencaAtual(String historiaDoencaAtual) {
-        this.historiaDoencaAtual = historiaDoencaAtual;
-    }
-
-    public String getQueixaPrincipal() {
-        return queixaPrincipal;
-    }
-
-    public void setQueixaPrincipal(String queixaPrincipal) {
-        this.queixaPrincipal = queixaPrincipal;
-    }
-
-    public String getInterrogatorioDiversosAparelhos() {
-        return interrogatorioDiversosAparelhos;
-    }
-
-    public void setInterrogatorioDiversosAparelhos(String interrogatorioDiversosAparelhos) {
-        this.interrogatorioDiversosAparelhos = interrogatorioDiversosAparelhos;
-    }
-
-    public String getHistoriaPatologicaPregressa() {
-        return historiaPatologicaPregressa;
-    }
-
-    public void setHistoriaPatologicaPregressa(String historiaPatologicaPregressa) {
-        this.historiaPatologicaPregressa = historiaPatologicaPregressa;
-    }
-
-    public String getHistoriaFamiliar() {
-        return historiaFamiliar;
-    }
-
-    public void setHistoriaFamiliar(String historiaFamiliar) {
-        this.historiaFamiliar = historiaFamiliar;
-    }
-
-    public String getHistoriaPsicossocial() {
-        return historiaPsicossocial;
-    }
-
-    public void setHistoriaPsicossocial(String historiaPsicossocial) {
-        this.historiaPsicossocial = historiaPsicossocial;
-    }
-
-
-    
 
 }

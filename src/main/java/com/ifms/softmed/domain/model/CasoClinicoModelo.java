@@ -112,7 +112,6 @@ public class CasoClinicoModelo implements Serializable {
     }
 
     public CasoClinicoModelo(CasoClinicoDTO obj) {
-        super();
         this.casoClinicoId = obj.getCasoClinicoId();
         this.numero = obj.getNumero();
         this.nomePaciente = obj.getNomePaciente();
@@ -133,8 +132,6 @@ public class CasoClinicoModelo implements Serializable {
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
-      //  this.examesFisicos = obj.getCa();
-
     }
 
     public Especialidade getTipoEspecialidade() {
