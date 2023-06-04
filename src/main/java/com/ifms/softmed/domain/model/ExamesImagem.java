@@ -12,7 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class ExamesImagem implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -41,30 +46,7 @@ public class ExamesImagem implements Serializable {
         this.examesIncorretos = examesIncorretos;
     }
 
-    public Integer getIdExameImagem() {
-        return idExameImagem;
-    }
-
-    public void setIdExameImagem(Integer idExameImagem) {
-        this.idExameImagem = idExameImagem;
-    }
-
-    public String getExamesCorretos() {
-        return examesCorretos;
-    }
-
-    public void setExamesCorretos(String examesCorretos) {
-        this.examesCorretos = examesCorretos;
-    }
-
-    public String getExamesIncorretos() {
-        return examesIncorretos;
-    }
-
-    public void setExamesIncorretos(String examesIncorretos) {
-        this.examesIncorretos = examesIncorretos;
-    }
-
+   
     public List<CasoClinicoModelo> getCasoClinicoEIMG() {
         return casoClinicoEIMG;
     }
@@ -72,11 +54,5 @@ public class ExamesImagem implements Serializable {
     public void setCasoClinicoEIMG(List<CasoClinicoModelo> casoClinicoEIMG) {
         this.casoClinicoEIMG = casoClinicoEIMG;
     }
- 
-    
-   
-
- 
-
-    
+  
 }
