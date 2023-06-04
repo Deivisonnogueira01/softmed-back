@@ -1,18 +1,29 @@
 package com.ifms.softmed.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.io.Serializable;
 
-@Data
-@AllArgsConstructor
+import com.ifms.softmed.domain.model.ExamesSoroLab;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
 @NoArgsConstructor
-public class ExamesSoroLabDTO {
+public class ExamesSoroLabDTO implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+
     private Integer idExameSoroLabDTO;
 
     private String examesCorretosSoroLabDTO;
 
     private String examesIncorretosSoroLabDTO;
-    
+ 
+    public ExamesSoroLabDTO(ExamesSoroLab obj){
+        this.idExameSoroLabDTO = obj.getIdExamesSorologicoLaboratoriais();
+        this.examesCorretosSoroLabDTO = obj.getExameCorretos();
+        this.examesIncorretosSoroLabDTO = obj.getExameIncorretos();
+    }
 }

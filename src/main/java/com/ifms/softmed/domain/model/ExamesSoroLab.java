@@ -12,7 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.ifms.softmed.dto.ExamesSoroLabDTO;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class ExamesSoroLab implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +49,12 @@ public class ExamesSoroLab implements Serializable {
         this.exameIncorretos = exameIncorretos;
     }
 
+    public ExamesSoroLab(ExamesSoroLabDTO obj){
+        this.idExamesSorologicoLaboratoriais = obj.getIdExameSoroLabDTO();
+        this.exameCorretos = obj.getExamesCorretosSoroLabDTO();
+        this.exameIncorretos = obj.getExamesIncorretosSoroLabDTO();
+    }
+
     public List<CasoClinicoModelo> getCasoClinicoModelos() {
         return casoClinicoModelos;
     }
@@ -50,54 +63,5 @@ public class ExamesSoroLab implements Serializable {
         this.casoClinicoModelos = casoClinicoModelos;
     }
 
-    public Integer getIdExamesSorologicoLaboratoriais() {
-        return idExamesSorologicoLaboratoriais;
-    }
-
-    public void setIdExamesSorologicoLaboratoriais(Integer idExamesSorologicoLaboratoriais) {
-        this.idExamesSorologicoLaboratoriais = idExamesSorologicoLaboratoriais;
-    }
-
-    public String getExameCorreto() {
-        return exameCorretos;
-    }
-
-    public void setExameCorreto(String exameCorreto) {
-        this.exameCorretos = exameCorreto;
-    }
-
-    public String getExameIncorreto() {
-        return exameIncorretos;
-    }
-
-    public void setExameIncorreto(String exameIncorreto) {
-        this.exameIncorretos = exameIncorreto;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result
-                + ((idExamesSorologicoLaboratoriais == null) ? 0 : idExamesSorologicoLaboratoriais.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ExamesSoroLab other = (ExamesSoroLab) obj;
-        if (idExamesSorologicoLaboratoriais == null) {
-            if (other.idExamesSorologicoLaboratoriais != null)
-                return false;
-        } else if (!idExamesSorologicoLaboratoriais.equals(other.idExamesSorologicoLaboratoriais))
-            return false;
-        return true;
-    }
 
 }

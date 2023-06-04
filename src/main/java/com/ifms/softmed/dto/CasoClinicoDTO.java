@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
-import com.ifms.softmed.domain.model.ExamesFisicos;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -89,41 +88,41 @@ public class CasoClinicoDTO implements Serializable {
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
-        this.patologia = obj.getPatologia(); //extrair daqui
+        this.patologia = obj.getPatologia();
 
-        if(obj.getExamesSoroLabs() != null){
+        if (obj.getExamesSoroLabs() != null) {
             List<ExamesSoroLabDTO> examesSoroLabDTOs = obj.getExamesSoroLabs()
-            .stream()
-            .map(examesSoroLab -> new ExamesSoroLabDTO())
-            .collect(Collectors.toList());
+                    .stream()
+                    .map(examesSoroLab -> new ExamesSoroLabDTO(examesSoroLab))
+                    .collect(Collectors.toList());
             this.soroLabDTOs = examesSoroLabDTOs;
         }
 
-        if(obj.getExamesImagems() != null){
+        if (obj.getExamesImagems() != null) {
             List<ExamesImagemDTO> examesImagemDTOs = obj.getExamesImagems()
-            .stream()
-            .map(examesImg -> new ExamesImagemDTO())
-            .collect(Collectors.toList());
+                    .stream()
+                    .map(examesImg -> new ExamesImagemDTO(examesImg))
+                    .collect(Collectors.toList());
             this.imagemDTOs = examesImagemDTOs;
         }
 
-        if(obj.getExamesFisicos() != null){
+        if (obj.getExamesFisicos() != null) {
             List<ExameFisicosDTO> examesDTO = obj.getExamesFisicos()
-            .stream()
-            .map(examesFisicos -> new ExameFisicosDTO(examesFisicos)) //
-            .collect(Collectors.toList());
+                    .stream()
+                    .map(examesFisicos -> new ExameFisicosDTO(examesFisicos))
+                    .collect(Collectors.toList());
             this.exameFisicosDTOs = examesDTO;
         }
 
-        if(obj.getTestesFarmacologicos() != null){
+        if (obj.getTestesFarmacologicos() != null) {
             List<TestesFarmacologicosDTO> testesFarmaDTO = obj.getTestesFarmacologicos()
-            .stream()
-            .map(testesFarma -> new TestesFarmacologicosDTO())
-            .collect(Collectors.toList());
+                    .stream()
+                    .map(testesFarma -> new TestesFarmacologicosDTO(testesFarma))
+                    .collect(Collectors.toList());
             this.testesDTO = testesFarmaDTO;
         }
-       
-    } 
+
+    }
 
     public Especialidade getTipoEspecialidade() {
         return especialidade;

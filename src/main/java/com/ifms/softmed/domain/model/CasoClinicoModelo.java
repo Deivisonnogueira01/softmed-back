@@ -3,6 +3,7 @@ package com.ifms.softmed.domain.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -132,6 +133,15 @@ public class CasoClinicoModelo implements Serializable {
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
+
+        // AQUI
+        if(obj.getExameFisicosDTOs() == null){
+            List<ExamesFisicos> examesFisicosList = obj.getExameFisicosDTOs()
+            .stream()
+            .map(exFisicos -> new ExamesFisicos(exFisicos))
+            .collect(Collectors.toList());
+            this.examesFisicos = examesFisicosList;
+        }
     }
 
     public Especialidade getTipoEspecialidade() {

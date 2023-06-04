@@ -12,7 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.ifms.softmed.dto.ExameFisicosDTO;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class ExamesFisicos implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -32,37 +39,18 @@ public class ExamesFisicos implements Serializable{
     private List<CasoClinicoModelo> casoCliExFisico = new ArrayList<>();
 
     public ExamesFisicos(){
-
     }
-
-    public ExamesFisicos(Integer idExame, String examesCorretos, String examesIncorretos) {
-        this.idExame = idExame;
+    
+    public ExamesFisicos(Integer id, String examesCorretos, String examesIncorretos){
+        this.idExame = id;
         this.examesCorretos = examesCorretos;
         this.examesIncorretos = examesIncorretos;
     }
 
-    public Integer getIdExame() {
-        return idExame;
-    }
-
-    public void setIdExame(Integer idExame) {
-        this.idExame = idExame;
-    }
-
-    public String getExamesCorretos() {
-        return examesCorretos;
-    }
-
-    public void setExamesCorretos(String examesCorretos) {
-        this.examesCorretos = examesCorretos;
-    }
-
-    public String getExamesIncorretos() {
-        return examesIncorretos;
-    }
-
-    public void setExamesIncorretos(String examesIncorretos) {
-        this.examesIncorretos = examesIncorretos;
+    public ExamesFisicos(ExameFisicosDTO obj){
+        this.idExame = obj.getIdExameFisicoDTO();
+        this.examesCorretos = obj.getExamesCorretosFisicosDTO();
+        this.examesIncorretos = obj.getExamesIncorretosFisicosDTO();
     }
 
     public List<CasoClinicoModelo> getCasoCliExFisico() {
