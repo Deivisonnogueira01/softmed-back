@@ -26,9 +26,7 @@ public class TestesFarmacologicos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTestes;
 
-   
     private String testeCorreto;
-
   
     private String testesIncorretos;
 
