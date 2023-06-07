@@ -22,7 +22,7 @@ public class ExamesSoroLabDTO implements Serializable{
     private String examesIncorretosSoroLabDTO;
  
     public ExamesSoroLabDTO(ExamesSoroLab obj){
-        this.idExameSoroLabDTO = obj.getIdExamesSorologicoLaboratoriais();
+        this.idExameSoroLabDTO = obj.getIdSoro();
         this.examesCorretosSoroLabDTO = obj.getExameCorretos();
         this.examesIncorretosSoroLabDTO = obj.getExameIncorretos();
     }

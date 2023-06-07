@@ -165,6 +165,4 @@ public class CasoClinicoModelo implements Serializable {
         this.patologia = patologia;
     }
 
-   
-
 }

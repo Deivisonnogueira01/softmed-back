@@ -32,8 +32,8 @@ public class ExamesImagem implements Serializable {
 
     @ManyToMany
     @JoinTable(name ="exame_image_caso",
-    joinColumns = @JoinColumn(name = "exame_image_id"),
-    inverseJoinColumns = @JoinColumn(name = "caso_cli_img_id"))
+    joinColumns = @JoinColumn(name = "id_exame_imagem"),
+    inverseJoinColumns = @JoinColumn(name = "caso_clinico_id"))
     private List<CasoClinicoModelo> casoClinicoEIMG = new ArrayList<>();
 
     public ExamesImagem(){

@@ -32,8 +32,8 @@ public class TestesFarmacologicos implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "teste_de_caso",
-    joinColumns = @JoinColumn(name = "teste_id"),
-    inverseJoinColumns = @JoinColumn(name = "caso_farm_id"))
+    joinColumns = @JoinColumn(name = "id_testes"),
+    inverseJoinColumns = @JoinColumn(name = "caso_clinico_id"))
     private List<CasoClinicoModelo> casoCliFarm = new ArrayList<>();
 
     public TestesFarmacologicos(){

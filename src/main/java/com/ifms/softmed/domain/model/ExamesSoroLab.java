@@ -26,7 +26,7 @@ public class ExamesSoroLab implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idExamesSorologicoLaboratoriais;
+    private Integer idSoro;
 
     private String exameCorretos;
 
@@ -34,23 +34,23 @@ public class ExamesSoroLab implements Serializable {
 
     @ManyToMany
     @JoinTable(name ="exame_soro_caso",
-    joinColumns = @JoinColumn(name = "exame_soro_id"),
-    inverseJoinColumns = @JoinColumn(name = "caso_cli_id"))
+    joinColumns = @JoinColumn(name = "id_soro"),
+    inverseJoinColumns = @JoinColumn(name = "caso_clinico_id"))
     private List<CasoClinicoModelo> casoClinicoModelos = new ArrayList<>();
 
     public ExamesSoroLab(){
         
     }
 
-    public ExamesSoroLab(Integer idExamesSorologicoLaboratoriais, String exameCorretos,
+    public ExamesSoroLab(Integer idSoro, String exameCorretos,
             String exameIncorretos) {
-        this.idExamesSorologicoLaboratoriais = idExamesSorologicoLaboratoriais;
+        this.idSoro = idSoro;
         this.exameCorretos = exameCorretos;
         this.exameIncorretos = exameIncorretos;
     }
 
     public ExamesSoroLab(ExamesSoroLabDTO obj){
-        this.idExamesSorologicoLaboratoriais = obj.getIdExameSoroLabDTO();
+        this.idSoro = obj.getIdExameSoroLabDTO();
         this.exameCorretos = obj.getExamesCorretosSoroLabDTO();
         this.exameIncorretos = obj.getExamesIncorretosSoroLabDTO();
     }

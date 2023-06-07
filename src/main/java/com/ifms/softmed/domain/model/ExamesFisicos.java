@@ -34,8 +34,8 @@ public class ExamesFisicos implements Serializable{
 
     @ManyToMany
     @JoinTable(name = "caso_cli_ex_fisico",
-    joinColumns = @JoinColumn(name ="caso_cli_id"),
-    inverseJoinColumns = @JoinColumn(name ="exame_fi_id"))
+    joinColumns = @JoinColumn(name ="id_exame"), //chave da classe
+    inverseJoinColumns = @JoinColumn(name ="caso_clinico_id")) // chave da classe relacionada
     private List<CasoClinicoModelo> casoCliExFisico = new ArrayList<>();
 
     public ExamesFisicos(){
