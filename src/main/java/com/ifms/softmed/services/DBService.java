@@ -10,11 +10,7 @@ import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.enums.Perfil;
 import com.ifms.softmed.domain.model.Administrator;
-import com.ifms.softmed.domain.model.CasoClinicoModelo;
-import com.ifms.softmed.domain.model.ExamesFisicos;
-import com.ifms.softmed.domain.model.ExamesImagem;
-import com.ifms.softmed.domain.model.ExamesSoroLab;
-import com.ifms.softmed.domain.model.TestesFarmacologicos;
+import com.ifms.softmed.domain.model.CasoClinico;
 import com.ifms.softmed.repositories.CasoClinicoRepository;
 import com.ifms.softmed.repositories.ExameFisicoRepository;
 import com.ifms.softmed.repositories.ExameImagemRepository;
@@ -52,7 +48,7 @@ public class DBService {
                                 encoder.encode("123"));
                 admin1.addPerfil(Perfil.ADMIN);
 
-                 CasoClinicoModelo caso1 = new CasoClinicoModelo(null,
+                 CasoClinico caso1 = new CasoClinico(null,
                                 1,
                                 "Joao",
                                 22,

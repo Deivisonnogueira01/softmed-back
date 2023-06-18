@@ -31,7 +31,7 @@ public class ExamesFisicos implements Serializable{
     @ManyToOne
     @JoinColumn(name = "caso_id")
     @JsonIgnore
-    private CasoClinicoModelo casof;
+    private CasoClinico casof;
  
     public ExamesFisicos(){
     }

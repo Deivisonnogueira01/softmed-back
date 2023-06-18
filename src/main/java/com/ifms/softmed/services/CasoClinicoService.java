@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.enums.Especialidade;
-import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.domain.model.CasoClinico;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 
 @Service
 public interface CasoClinicoService {
 
-    List<CasoClinicoModelo> findAll();
+    List<CasoClinico> findAll();
 
-    CasoClinicoModelo findbyId(Integer id);
+    CasoClinico findbyId(Integer id);
 
-    List<CasoClinicoModelo> findByEspecialidade(Especialidade especialidade);
+    List<CasoClinico> findByEspecialidade(Especialidade especialidade);
 
-    CasoClinicoModelo create(CasoClinicoDTO casoClinicoDTO);
+    CasoClinico create(CasoClinicoDTO casoClinicoDTO);
 }

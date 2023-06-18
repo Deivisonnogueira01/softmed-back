@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ifms.softmed.domain.enums.Especialidade;
-import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.domain.model.CasoClinico;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 import com.ifms.softmed.services.impl.CasoClinicoServiceImpl;
 
@@ -30,14 +30,14 @@ public class CasoClinicoController {
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<CasoClinicoDTO> findById(@PathVariable Integer id) {
-    CasoClinicoModelo obj = service.findbyId(id);
+    CasoClinico obj = service.findbyId(id);
     return ResponseEntity.ok().body(new CasoClinicoDTO(obj));
 
   }
 
   @GetMapping
   public ResponseEntity<List<CasoClinicoDTO>> findAll(){
-    List<CasoClinicoModelo> list = service.findAll();
+    List<CasoClinico> list = service.findAll();
     List<CasoClinicoDTO> listDTO = list.stream()
     .map(obj -> new CasoClinicoDTO(obj)).collect(Collectors.toList());
     return ResponseEntity.ok().body(listDTO);
@@ -45,13 +45,13 @@ public class CasoClinicoController {
 
 
   @GetMapping("/espec/{especialidade}")
-  public List<CasoClinicoModelo> getFindByEspecialidade(@PathVariable Especialidade especialidade){
+  public List<CasoClinico> getFindByEspecialidade(@PathVariable Especialidade especialidade){
      return service.findByEspecialidade(especialidade);
   }
 
   @PostMapping
   public ResponseEntity<CasoClinicoDTO> create(@Valid @RequestBody CasoClinicoDTO objDTO){
-     CasoClinicoModelo newObj = service.create(objDTO);
+     CasoClinico newObj = service.create(objDTO);
      URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getCasoClinicoId()).toUri();
      return ResponseEntity.created(uri).build();
   }

@@ -25,7 +25,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @Table(name = "caso_clinico")
-public class CasoClinicoModelo implements Serializable {
+public class CasoClinico implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -97,10 +97,10 @@ public class CasoClinicoModelo implements Serializable {
     @OneToMany(mappedBy = "casot")
     private List<TestesFarmacologicos> examesIncorretosTestes;
 
-    public CasoClinicoModelo() {
+    public CasoClinico() {
     }
 
-    public CasoClinicoModelo(Integer casoClinicoId, Integer numero, String nomePaciente, Integer idadePaciente,
+    public CasoClinico(Integer casoClinicoId, Integer numero, String nomePaciente, Integer idadePaciente,
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
             String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
@@ -130,7 +130,7 @@ public class CasoClinicoModelo implements Serializable {
 
     }
 
-    public CasoClinicoModelo(CasoClinicoDTO obj) {
+    public CasoClinico(CasoClinicoDTO obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
         this.numero = obj.getNumero();
         this.nomePaciente = obj.getNomePaciente();

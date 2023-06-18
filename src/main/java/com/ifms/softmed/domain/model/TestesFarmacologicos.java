@@ -31,7 +31,7 @@ public class TestesFarmacologicos implements Serializable {
     @ManyToOne
     @JoinColumn(name = "teste_id")
     @JsonIgnore
-    private CasoClinicoModelo casot;
+    private CasoClinico casot;
 
     public TestesFarmacologicos(){
         

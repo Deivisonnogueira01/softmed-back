@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
-import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.domain.model.CasoClinico;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -73,7 +73,7 @@ public class CasoClinicoDTO implements Serializable {
     private List<TestesFarmacologicosDTO> examesCorretosTestes = new ArrayList<>();
     private List<TestesFarmacologicosDTO> examesIncorretosTestes = new ArrayList<>();
 
-    public CasoClinicoDTO(CasoClinicoModelo obj) {
+    public CasoClinicoDTO(CasoClinico obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
         this.numero = obj.getNumero();
         this.nomePaciente = obj.getNomePaciente();

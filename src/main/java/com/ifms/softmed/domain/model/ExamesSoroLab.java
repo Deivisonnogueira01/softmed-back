@@ -33,7 +33,7 @@ public class ExamesSoroLab implements Serializable {
     @ManyToOne
     @JoinColumn(name = "soro_id")
     @JsonIgnore
-    private CasoClinicoModelo caso;
+    private CasoClinico caso;
 
     public ExamesSoroLab(){
         

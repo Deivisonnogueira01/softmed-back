@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ifms.softmed.domain.enums.Especialidade;
-import com.ifms.softmed.domain.model.CasoClinicoModelo;
+import com.ifms.softmed.domain.model.CasoClinico;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 import com.ifms.softmed.repositories.CasoClinicoRepository;
 import com.ifms.softmed.services.CasoClinicoService;
@@ -19,28 +19,28 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
     private CasoClinicoRepository repository;
 
     @Override
-    public List<CasoClinicoModelo> findAll() {
+    public List<CasoClinico> findAll() {
 
        return repository.findAll();
     }
 
     @Override
-    public CasoClinicoModelo findbyId(Integer id) {
-        Optional<CasoClinicoModelo> obj = repository.findById(id);
+    public CasoClinico findbyId(Integer id) {
+        Optional<CasoClinico> obj = repository.findById(id);
         return obj.orElse(null);
         
     }
 
     @Override
-    public List<CasoClinicoModelo> findByEspecialidade(Especialidade especialidade) {
+    public List<CasoClinico> findByEspecialidade(Especialidade especialidade) {
         return repository.findByEspecialidade(especialidade);
     }
 
     @Override
-    public CasoClinicoModelo create(CasoClinicoDTO casoClinicoDTO) {
+    public CasoClinico create(CasoClinicoDTO casoClinicoDTO) {
         
         casoClinicoDTO.setCasoClinicoId(null);
-        CasoClinicoModelo newObj = new CasoClinicoModelo(casoClinicoDTO);
+        CasoClinico newObj = new CasoClinico(casoClinicoDTO);
        return repository.save(newObj);
     }
 
