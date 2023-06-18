@@ -38,7 +38,8 @@ public class CasoClinicoController {
   @GetMapping
   public ResponseEntity<List<CasoClinicoDTO>> findAll(){
     List<CasoClinicoModelo> list = service.findAll();
-    List<CasoClinicoDTO> listDTO = list.stream().map(obj -> new CasoClinicoDTO(obj)).collect(Collectors.toList());
+    List<CasoClinicoDTO> listDTO = list.stream()
+    .map(obj -> new CasoClinicoDTO(obj)).collect(Collectors.toList());
     return ResponseEntity.ok().body(listDTO);
   }
 
