@@ -1,9 +1,7 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,18 +9,22 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.dto.CasoClinicoDTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
+@AllArgsConstructor
+@Table(name = "caso_clinico")
 public class CasoClinicoModelo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,18 +73,29 @@ public class CasoClinicoModelo implements Serializable {
     @Enumerated(EnumType.STRING)
     protected Patologia patologia;
 
-    @ManyToMany(mappedBy = "casoClinicoModelos")
-    private List<ExamesSoroLab> examesSoroLabs = new ArrayList<>();
+    @OneToMany(mappedBy = "caso")
+    private List<ExamesSoroLab> examesCorretosSoroLab;
 
-    @ManyToMany(mappedBy = "casoClinicoEIMG")
-    private List<ExamesImagem> examesImagems = new ArrayList<>();
+    @OneToMany(mappedBy = "caso")
+    private List<ExamesSoroLab> examesIncorretosSoroLab;
 
-    @ManyToMany(mappedBy = "casoCliExFisico")
-    private List<ExamesFisicos> examesFisicos = new ArrayList<>();
+    @OneToMany(mappedBy =  "casoi")
+    private List<ExamesImagem> examesCorretosImagem;
 
-    @ManyToMany(mappedBy = "casoCliFarm")
-    private List<TestesFarmacologicos> testesFarmacologicos = new ArrayList<>();
+    @OneToMany(mappedBy = "casoi")
+    private List<ExamesImagem> examesIncorretosImagem;
 
+    @OneToMany(mappedBy = "casof")
+    private List<ExamesFisicos> examesCorretosFisicos;
+
+    @OneToMany(mappedBy = "casof")
+    private List<ExamesFisicos> examesIncorretosFisicos;
+
+    @OneToMany(mappedBy = "casot")
+    private List<TestesFarmacologicos> examesCorretosTestes;
+
+    @OneToMany(mappedBy = "casot")
+    private List<TestesFarmacologicos> examesIncorretosTestes;
 
     public CasoClinicoModelo() {
     }
@@ -140,13 +153,13 @@ public class CasoClinicoModelo implements Serializable {
         this.patologia = obj.getPatologia();
 
         // AQUI
-        if(obj.getExameFisicosDTOs() == null){
+     /*   if(obj.getExameFisicosDTOs() == null){
             List<ExamesFisicos> examesFisicosList = obj.getExameFisicosDTOs()
             .stream()
             .map(exFisicos -> new ExamesFisicos(exFisicos))
             .collect(Collectors.toList());
             this.examesFisicos = examesFisicosList;
-        }
+        }*/
     }
 
     public Especialidade getTipoEspecialidade() {

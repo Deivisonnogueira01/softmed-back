@@ -1,17 +1,15 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifms.softmed.dto.ExameFisicosDTO;
 
 import lombok.Getter;
@@ -28,39 +26,26 @@ public class ExamesFisicos implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idExame;
 
-    private String examesCorretos;
+    private String examesFisicos;
 
-    private String examesIncorretos;
-
-    @ManyToMany
-    @JoinTable(name = "caso_cli_ex_fisico",
-    joinColumns = @JoinColumn(name ="id_exame"), //chave da classe
-    inverseJoinColumns = @JoinColumn(name ="caso_clinico_id")) // chave da classe relacionada
-    private List<CasoClinicoModelo> casoCliExFisico = new ArrayList<>();
-
+    @ManyToOne
+    @JoinColumn(name = "caso_id")
+    @JsonIgnore
+    private CasoClinicoModelo casof;
+ 
     public ExamesFisicos(){
     }
     
-    public ExamesFisicos(Integer id, String examesCorretos, String examesIncorretos){
+    public ExamesFisicos(Integer id, String examesFisicos){
         this.idExame = id;
-        this.examesCorretos = examesCorretos;
-        this.examesIncorretos = examesIncorretos;
+        this.examesFisicos = examesFisicos;
     }
 
     public ExamesFisicos(ExameFisicosDTO obj){
         this.idExame = obj.getIdExameFisicoDTO();
-        this.examesCorretos = obj.getExamesCorretosFisicosDTO();
-        this.examesIncorretos = obj.getExamesIncorretosFisicosDTO();
+        this.examesFisicos = obj.getExamesFisicosDTO();
     }
 
-    public List<CasoClinicoModelo> getCasoCliExFisico() {
-        return casoCliExFisico;
-    }
 
-    public void setCasoCliExFisico(List<CasoClinicoModelo> casoCliExFisico) {
-        this.casoCliExFisico = casoCliExFisico;
-    }
-
-    
     
 }

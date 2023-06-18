@@ -3,12 +3,12 @@ package com.ifms.softmed.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
 import com.ifms.softmed.domain.model.CasoClinicoModelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class CasoClinicoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,13 +61,17 @@ public class CasoClinicoDTO implements Serializable {
 
     protected Patologia patologia;
 
-    private List<ExamesSoroLabDTO> soroLabDTOs = new ArrayList<>();
+    private List<ExamesSoroLabDTO> examesCorretosLab = new ArrayList<>();
+    private List<ExamesSoroLabDTO> exameIncorretosLab = new ArrayList<>();
 
-    private List<ExamesImagemDTO> imagemDTOs = new ArrayList<>();
+    private List<ExamesImagemDTO> examesCorretosImagem = new ArrayList<>();
+    private List<ExamesImagemDTO> examesIncorretosImagem = new ArrayList<>();
 
-    private List<ExameFisicosDTO> exameFisicosDTOs = new ArrayList<>();
+    private List<ExameFisicosDTO> examesCorretosFisicos = new ArrayList<>();
+    private List<ExameFisicosDTO> examesIncorretosFisicos = new ArrayList<>();
 
-    private List<TestesFarmacologicosDTO> testesDTO = new ArrayList<>();
+    private List<TestesFarmacologicosDTO> examesCorretosTestes = new ArrayList<>();
+    private List<TestesFarmacologicosDTO> examesIncorretosTestes = new ArrayList<>();
 
     public CasoClinicoDTO(CasoClinicoModelo obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
@@ -90,37 +95,6 @@ public class CasoClinicoDTO implements Serializable {
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
 
-        if (obj.getExamesSoroLabs() != null) {
-            List<ExamesSoroLabDTO> examesSoroLabDTOs = obj.getExamesSoroLabs()
-                    .stream()
-                    .map(examesSoroLab -> new ExamesSoroLabDTO(examesSoroLab))
-                    .collect(Collectors.toList());
-            this.soroLabDTOs = examesSoroLabDTOs;
-        }
-
-        if (obj.getExamesImagems() != null) {
-            List<ExamesImagemDTO> examesImagemDTOs = obj.getExamesImagems()
-                    .stream()
-                    .map(examesImg -> new ExamesImagemDTO(examesImg))
-                    .collect(Collectors.toList());
-            this.imagemDTOs = examesImagemDTOs;
-        }
-
-        if (obj.getExamesFisicos() != null) {
-            List<ExameFisicosDTO> examesDTO = obj.getExamesFisicos()
-                    .stream()
-                    .map(examesFisicos -> new ExameFisicosDTO(examesFisicos))
-                    .collect(Collectors.toList());
-            this.exameFisicosDTOs = examesDTO;
-        }
-
-        if (obj.getTestesFarmacologicos() != null) {
-            List<TestesFarmacologicosDTO> testesFarmaDTO = obj.getTestesFarmacologicos()
-                    .stream()
-                    .map(testesFarma -> new TestesFarmacologicosDTO(testesFarma))
-                    .collect(Collectors.toList());
-            this.testesDTO = testesFarmaDTO;
-        }
 
     }
 

@@ -73,43 +73,13 @@ public class DBService {
                                 Especialidade.MEDICINA_DA_FAMILIA,
                                 Patologia.GOTA);
 
-                ExamesFisicos examesFisicos = new ExamesFisicos(null, "ExCorretoFisico", "ExIncorretoFisico");
-                ExamesFisicos examesFisicos2 = new ExamesFisicos(null, "ExCorretoFisico2", "ExIncorretoFisico2");
-
-                ExamesImagem examesImagem = new ExamesImagem(null, "testeImagemCorreto", "testeImagemIncorreto");
-                ExamesImagem examesImagem2 = new ExamesImagem(null, "testeImagemCorreto2", "testeImagemIncorreto2");
-
-                ExamesSoroLab examesSoroLab = new ExamesSoroLab(null, "testeExameSoroCorreto", "testeExameIncorreto");
-                ExamesSoroLab examesSoroLab2 = new ExamesSoroLab(null, "testeExameSoroCorreto2", "testeExameIncorreto2");
-
-                TestesFarmacologicos testesFarmacologicos = new TestesFarmacologicos(null, "teste", "testeIncorreto");
-                TestesFarmacologicos testesFarmacologicos2 = new TestesFarmacologicos(null, "teste2", "testeIncorreto2");
-
-
-
-                caso1.getExamesFisicos().addAll(Arrays.asList(examesFisicos, examesFisicos2));
-                caso1.getExamesImagems().addAll(Arrays.asList(examesImagem, examesImagem2));
-                caso1.getExamesSoroLabs().addAll(Arrays.asList(examesSoroLab, examesSoroLab2));
-                caso1.getTestesFarmacologicos().addAll(Arrays.asList(testesFarmacologicos,testesFarmacologicos2));
                 
 
-                examesFisicos.getCasoCliExFisico().addAll(Arrays.asList(caso1));
-                examesFisicos2.getCasoCliExFisico().addAll(Arrays.asList(caso1));
 
-                examesImagem.getCasoClinicoEIMG().addAll(Arrays.asList(caso1));
-                examesImagem2.getCasoClinicoEIMG().addAll(Arrays.asList(caso1));
-
-                examesSoroLab.getCasoClinicoModelos().addAll(Arrays.asList(caso1));
-                examesSoroLab2.getCasoClinicoModelos().addAll(Arrays.asList(caso1));
-
-                testesFarmacologicos.getCasoCliFarm().addAll(Arrays.asList(caso1));
-                testesFarmacologicos2.getCasoCliFarm().addAll(Arrays.asList(caso1));
+            
 
                 casoClinicoRepository.saveAll(Arrays.asList(caso1));
-                exameFisicoRepository.saveAll(Arrays.asList(examesFisicos,examesFisicos2));
-                exameImagemRepository.saveAll(Arrays.asList(examesImagem, examesImagem2));
-                exameSoroLabRepository.saveAll(Arrays.asList(examesSoroLab,examesSoroLab2));
-                testesFarmaRepository.saveAll(Arrays.asList(testesFarmacologicos,testesFarmacologicos2));
+               
                 
                 repository2.saveAll(Arrays.asList(admin1));
         }

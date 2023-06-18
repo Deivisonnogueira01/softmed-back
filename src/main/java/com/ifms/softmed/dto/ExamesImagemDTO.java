@@ -17,13 +17,12 @@ public class ExamesImagemDTO implements Serializable {
 
     private Integer idExameImagemDTO;
 
-    private String examesCorretosImgDTO;
+    private String examesImagem;
 
-    private String examesIncorretosImgDTO;
 
     public ExamesImagemDTO(ExamesImagem obj){
         this.idExameImagemDTO = obj.getIdExameImagem();
-        this.examesCorretosImgDTO = obj.getExamesCorretos();
-        this.examesIncorretosImgDTO = obj.getExamesIncorretos();
+        this.examesImagem = obj.getExamesImagem();
+        
     }
 }

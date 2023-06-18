@@ -1,25 +1,25 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifms.softmed.dto.ExamesSoroLabDTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class ExamesSoroLab implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,40 +28,28 @@ public class ExamesSoroLab implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSoro;
 
-    private String exameCorretos;
+    private String examesSoro;
 
-    private String exameIncorretos;
-
-    @ManyToMany
-    @JoinTable(name ="exame_soro_caso",
-    joinColumns = @JoinColumn(name = "id_soro"),
-    inverseJoinColumns = @JoinColumn(name = "caso_clinico_id"))
-    private List<CasoClinicoModelo> casoClinicoModelos = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "soro_id")
+    @JsonIgnore
+    private CasoClinicoModelo caso;
 
     public ExamesSoroLab(){
         
     }
 
-    public ExamesSoroLab(Integer idSoro, String exameCorretos,
+    public ExamesSoroLab(Integer idSoro, String examesSoro,
             String exameIncorretos) {
         this.idSoro = idSoro;
-        this.exameCorretos = exameCorretos;
-        this.exameIncorretos = exameIncorretos;
+        this.examesSoro = examesSoro;
+      
     }
 
     public ExamesSoroLab(ExamesSoroLabDTO obj){
         this.idSoro = obj.getIdExameSoroLabDTO();
-        this.exameCorretos = obj.getExamesCorretosSoroLabDTO();
-        this.exameIncorretos = obj.getExamesIncorretosSoroLabDTO();
+        this.examesSoro = obj.getExamesSoroDTO();
     }
-
-    public List<CasoClinicoModelo> getCasoClinicoModelos() {
-        return casoClinicoModelos;
-    }
-
-    public void setCasoClinicoModelos(List<CasoClinicoModelo> casoClinicoModelos) {
-        this.casoClinicoModelos = casoClinicoModelos;
-    }
-
 
 }
+

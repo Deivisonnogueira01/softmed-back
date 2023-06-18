@@ -1,16 +1,16 @@
 package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ifms.softmed.dto.TestesFarmacologicosDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,32 +26,27 @@ public class TestesFarmacologicos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTestes;
 
-    private String testeCorreto;
+    private String testeFarma;
   
-    private String testesIncorretos;
-
-    @ManyToMany
-    @JoinTable(name = "teste_de_caso",
-    joinColumns = @JoinColumn(name = "id_testes"),
-    inverseJoinColumns = @JoinColumn(name = "caso_clinico_id"))
-    private List<CasoClinicoModelo> casoCliFarm = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "teste_id")
+    @JsonIgnore
+    private CasoClinicoModelo casot;
 
     public TestesFarmacologicos(){
         
     }
     
-    public TestesFarmacologicos(Integer idTestes, String testeCorreto, String testesIncorretos) {
+    public TestesFarmacologicos(Integer idTestes, String testesFarma) {
         this.idTestes = idTestes;
-        this.testeCorreto = testeCorreto;
-        this.testesIncorretos = testesIncorretos;
+        this.testeFarma = testesFarma;
+        
     }
 
-    public List<CasoClinicoModelo> getCasoCliFarm() {
-        return casoCliFarm;
+    public TestesFarmacologicos(TestesFarmacologicosDTO obj){
+        this.idTestes = obj.getIdTestesDTO();
+        this.testeFarma = obj.getTestesFarma();
     }
 
-    public void setCasoCliFarm(List<CasoClinicoModelo> casoCliFarm) {
-        this.casoCliFarm = casoCliFarm;
-    }
 
 }
