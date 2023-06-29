@@ -3,6 +3,7 @@ package com.ifms.softmed.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.enums.Patologia;
@@ -62,17 +63,13 @@ public class CasoClinicoDTO implements Serializable {
     protected Patologia patologia;
 
     private List<ExamesSoroLabDTO> examesCorretosLab = new ArrayList<>();
-    private List<ExamesSoroLabDTO> exameIncorretosLab = new ArrayList<>();
 
     private List<ExamesImagemDTO> examesCorretosImagem = new ArrayList<>();
-    private List<ExamesImagemDTO> examesIncorretosImagem = new ArrayList<>();
 
     private List<ExameFisicosDTO> examesCorretosFisicos = new ArrayList<>();
-    private List<ExameFisicosDTO> examesIncorretosFisicos = new ArrayList<>();
 
     private List<TestesFarmacologicosDTO> examesCorretosTestes = new ArrayList<>();
-    private List<TestesFarmacologicosDTO> examesIncorretosTestes = new ArrayList<>();
-
+    
     public CasoClinicoDTO(CasoClinico obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
         this.numero = obj.getNumero();
@@ -95,6 +92,37 @@ public class CasoClinicoDTO implements Serializable {
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
 
+        if(obj.getExamesCorretosSoroLab() != null){
+            List<ExamesSoroLabDTO> examesSoroLabsCorretosDTO = obj.getExamesCorretosSoroLab()
+            .stream()
+            .map(examesCorreLab -> new ExamesSoroLabDTO(examesCorreLab))
+            .collect(Collectors.toList());
+            this.examesCorretosLab = examesSoroLabsCorretosDTO;
+        }
+
+        if(obj.getExamesCorretosImagem() != null){
+            List<ExamesImagemDTO> examesCorretosDTO = obj.getExamesCorretosImagem()
+            .stream()
+            .map(examesCorretosObj -> new ExamesImagemDTO(examesCorretosObj))
+            .collect(Collectors.toList());
+            this.examesCorretosImagem = examesCorretosDTO;
+        }
+
+        if(obj.getExamesCorretosFisicos() != null){
+            List<ExameFisicosDTO> examesCorretosDTO = obj.getExamesCorretosFisicos()
+            .stream()
+            .map(examesCorretosDTOObj -> new ExameFisicosDTO(examesCorretosDTOObj))
+            .collect(Collectors.toList());
+            this.examesCorretosFisicos = examesCorretosDTO;
+        }
+
+        if(obj.getExamesCorretosTestes() != null){
+            List<TestesFarmacologicosDTO> testesCorretosDTO = obj.getExamesCorretosTestes()
+            .stream()
+            .map(examesCorretosTestesObj -> new TestesFarmacologicosDTO(examesCorretosTestesObj))
+            .collect(Collectors.toList());
+            this.examesCorretosTestes = testesCorretosDTO;
+        }
 
     }
 

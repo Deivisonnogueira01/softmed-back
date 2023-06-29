@@ -2,6 +2,7 @@ package com.ifms.softmed.domain.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,12 +19,14 @@ import com.ifms.softmed.dto.CasoClinicoDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "caso_clinico")
 public class CasoClinico implements Serializable {
 
@@ -31,75 +34,60 @@ public class CasoClinico implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer casoClinicoId;
+    private Integer casoClinicoId;
 
-    protected Integer numero;
+    private Integer numero;
 
-    protected String nomePaciente;
+    private String nomePaciente;
 
-    protected Integer idadePaciente;
+    private Integer idadePaciente;
 
-    protected Double alturaPaciente;
+    private Double alturaPaciente;
 
-    protected Double pesoPaciente;
+    private Double pesoPaciente;
 
-    protected String sexoPaciente;
+    private String sexoPaciente;
 
-    protected String corPaciente;
+    private String corPaciente;
 
-    protected String profissaoPaciente; //
+    private String profissaoPaciente;
 
-    protected String religiaoPaciente; //
+    private String religiaoPaciente; 
 
-    protected String naturalPaciente; //
+    private String naturalPaciente;
 
-    protected String residentePaciente; //
+    private String residentePaciente;
 
-    protected String historiaDoencaAtual;
+    private String historiaDoencaAtual;
 
-    protected String queixaPrincipal;
+    private String queixaPrincipal;
 
-    protected String interrogatorioDiversosAparelhos;
+    private String interrogatorioDiversosAparelhos;
 
-    protected String historiaPatologicaPregressa;
+    private String historiaPatologicaPregressa;
 
-    protected String historiaFamiliar;
+    private String historiaFamiliar;
 
-    protected String historiaPsicossocial;
-
-    @Enumerated(EnumType.STRING)
-    protected Especialidade especialidade;
+    private String historiaPsicossocial;
 
     @Enumerated(EnumType.STRING)
-    protected Patologia patologia;
+    private Especialidade especialidade;
+
+    @Enumerated(EnumType.STRING)
+    private Patologia patologia;
 
     @OneToMany(mappedBy = "caso")
     private List<ExamesSoroLab> examesCorretosSoroLab;
 
-    @OneToMany(mappedBy = "caso")
-    private List<ExamesSoroLab> examesIncorretosSoroLab;
-
     @OneToMany(mappedBy =  "casoi")
     private List<ExamesImagem> examesCorretosImagem;
-
-    @OneToMany(mappedBy = "casoi")
-    private List<ExamesImagem> examesIncorretosImagem;
 
     @OneToMany(mappedBy = "casof")
     private List<ExamesFisicos> examesCorretosFisicos;
 
-    @OneToMany(mappedBy = "casof")
-    private List<ExamesFisicos> examesIncorretosFisicos;
-
     @OneToMany(mappedBy = "casot")
     private List<TestesFarmacologicos> examesCorretosTestes;
-
-    @OneToMany(mappedBy = "casot")
-    private List<TestesFarmacologicos> examesIncorretosTestes;
-
-    public CasoClinico() {
-    }
-
+  
     public CasoClinico(Integer casoClinicoId, Integer numero, String nomePaciente, Integer idadePaciente,
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
@@ -151,15 +139,39 @@ public class CasoClinico implements Serializable {
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
-
-        // AQUI
-     /*   if(obj.getExameFisicosDTOs() == null){
-            List<ExamesFisicos> examesFisicosList = obj.getExameFisicosDTOs()
+ 
+      if(obj.getExamesCorretosFisicos() != null){
+            List<ExamesFisicos> examesFisicosList = obj.getExamesCorretosFisicos()
             .stream()
             .map(exFisicos -> new ExamesFisicos(exFisicos))
             .collect(Collectors.toList());
-            this.examesFisicos = examesFisicosList;
-        }*/
+            this.examesCorretosFisicos = examesFisicosList;
+        }
+
+         if(obj.getExamesCorretosImagem() != null){
+            List<ExamesImagem> exImagemList = obj.getExamesCorretosImagem()
+            .stream()
+            .map(exObj -> new ExamesImagem(exObj))
+            .collect(Collectors.toList());
+            this.examesCorretosImagem = exImagemList;
+        }
+
+         if(obj.getExamesCorretosLab() != null){
+            List<ExamesSoroLab> examesCorretosList = obj.getExamesCorretosLab()
+            .stream()
+            .map(soroLabObj -> new ExamesSoroLab(soroLabObj))
+            .collect(Collectors.toList());
+            this.examesCorretosSoroLab = examesCorretosList;
+        }
+
+         if(obj.getExamesCorretosTestes() != null){
+            List<TestesFarmacologicos> testeCorretoList = obj.getExamesCorretosTestes()
+            .stream()
+            .map(testeCorretoObj -> new TestesFarmacologicos(testeCorretoObj))
+            .collect(Collectors.toList());
+            this.examesCorretosTestes = testeCorretoList;
+        }
+        
     }
 
     public Especialidade getTipoEspecialidade() {
