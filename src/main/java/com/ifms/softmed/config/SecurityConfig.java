@@ -1,71 +1,69 @@
-package com.ifms.softmed.config;
+/*package com.ifms.softmed.config;
 
-import java.util.Arrays;
-
-import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.ifms.softmed.security.JWTAuthenticationFilter;
-import com.ifms.softmed.security.JWTAuthorizationFilter;
-import com.ifms.softmed.security.JWTUtil;
-
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+import com.ifms.softmed.services.impl.UserDetailsServiceImpl;
+*/
+/* 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    
+    @Autowired
+    UserDetailsServiceImpl usuarioService;
 
-  private static final String[] PUBLIC_MATCHERS = { "/h2-console/**" };
+    @Autowired
+    JWTUtil jwtUtil;
+    
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
-  @Autowired
-  private Environment env;
 
-  @Autowired
-  private JWTUtil jwtUtil;
-  @Autowired
-  private UserDetailsService userDetailsService;
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .userDetailsService(usuarioService)
+            .passwordEncoder(passwordEncoder());
+    }
 
-  @Override
-	protected void configure(HttpSecurity http) throws Exception {
-		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
-			http.headers().frameOptions().disable();
-		}
+    @Override
+    protected void configure( HttpSecurity http ) throws Exception {
+        http
+            .csrf().disable()
+            .authorizeRequests()
+                .antMatchers("/casos-clinicos/**")
+                    .hasAnyRole("USER", "ADMIN")
+                .antMatchers("/casos-clinicos/**")
+                    .hasAnyRole("USER", "ADMIN")
+                .antMatchers("/casos-clinicos/**")
+                    .hasRole("ADMIN")
+              //  .antMatchers(HttpMethod.POST, "/casos-clinicos/**")
+            //        .permitAll()
+                .anyRequest().authenticated()
+            .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        
+    }
 
-		http.cors().and().csrf().disable();
-		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
-		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
-		http.authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated();
-
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-	}
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-	}
-
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
-		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
-		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}
-
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(
+                "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**");
+    }
 
 }
+*/

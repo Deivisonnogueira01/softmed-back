@@ -1,4 +1,4 @@
-package com.ifms.softmed.controllers;
+package com.ifms.softmed.controller;
 
 import java.net.URI;
 import java.util.List;

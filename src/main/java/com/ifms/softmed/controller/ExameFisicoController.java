@@ -1,4 +1,4 @@
-package com.ifms.softmed.controllers;
+package com.ifms.softmed.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
