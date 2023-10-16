@@ -70,7 +70,7 @@ public enum Patologia {
     GOTA("GOTA"),
     MIASTENIA("MIASTENIA_GRAVIS"),
     
-    TEP("TEP");
+    TEP("Tromboembolismo pulmonar");
 
     private String patologia;
 

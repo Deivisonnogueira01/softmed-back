@@ -20,27 +20,9 @@ import com.ifms.softmed.services.exceptions.SenhaInvalidaException;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 
-    @Autowired
-    private PasswordEncoder encoder;
-
+    
     @Autowired
     private PessoaRepository repository;
-
-    @Transactional
-    public Pessoa salvar(Pessoa usuario){
-        return repository.save(usuario);
-    }
-
-    public UserDetails autenticar(Pessoa usuario){
-        UserDetails user = loadUserByUsername(usuario.getEmail());
-        boolean senhaTrue = encoder.matches(usuario.getSenha(), user.getPassword());
-
-        if(senhaTrue){
-            return user;
-        }
-
-        throw new SenhaInvalidaException();
-    }
 
 
     @Override

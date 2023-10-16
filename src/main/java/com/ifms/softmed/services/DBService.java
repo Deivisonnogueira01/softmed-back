@@ -25,7 +25,7 @@ public class DBService {
         private CasoClinicoRepository casoClinicoRepository;
 
         @Autowired
-        private PessoaRepository repository2;
+        private PessoaRepository pessoaRepository;
 
         @Autowired
         private ExameFisicoRepository exameFisicoRepository;
@@ -44,11 +44,11 @@ public class DBService {
 
         public void instanciaDb() {
 
-         /*       Administrator admin1 = new Administrator(null, "deivison.nogueira@live.com",
+                Administrator admin1 = new Administrator(null, "deivison.nogueira@live.com",
                                 encoder.encode("123"));
-                admin1.addPerfil(Perfil.ADMIN);*/
+                admin1.addPerfil(Perfil.ADMIN);
 
-                 CasoClinico caso1 = new CasoClinico(null,
+                CasoClinico caso1 = new CasoClinico(null,
                                 1,
                                 "Joao",
                                 22,
@@ -69,8 +69,7 @@ public class DBService {
                                 Especialidade.MEDICINA_DA_FAMILIA,
                                 Patologia.GOTA);
 
-
                 casoClinicoRepository.saveAll(Arrays.asList(caso1));
-           //     repository2.saveAll(Arrays.asList(admin1));
+                pessoaRepository.saveAll(Arrays.asList(admin1));
         }
 }
