@@ -48,6 +48,10 @@ public class DBService {
                                 encoder.encode("123"));
                 admin1.addPerfil(Perfil.ADMIN);
 
+                Administrator aluno = new Administrator(null, "aluno.softmed@outlook.com",encoder.encode( "aluno"));
+                aluno.addPerfil(Perfil.ALUNO);
+
+
                 CasoClinico caso1 = new CasoClinico(null,
                                 1,
                                 "Joao",
