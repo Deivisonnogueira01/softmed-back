@@ -77,16 +77,16 @@ public class CasoClinico implements Serializable {
     private Patologia patologia;
 
     @OneToMany(mappedBy = "caso")
-    private List<ExamesSoroLab> examesCorretosSoroLab;
+    private List<ExamesSoroLab> examesSoroLab;
 
     @OneToMany(mappedBy =  "casoi")
-    private List<ExamesImagem> examesCorretosImagem;
+    private List<ExamesImagem> examesImagem;
 
     @OneToMany(mappedBy = "casof")
-    private List<ExamesFisicos> examesCorretosFisicos;
+    private List<ExamesFisicos> examesFisicos;
 
     @OneToMany(mappedBy = "casot")
-    private List<TestesFarmacologicos> examesCorretosTestes;
+    private List<TestesFarmacologicos> examesTesteFarma;
   
     public CasoClinico(Integer casoClinicoId, Integer numero, String nomePaciente, Integer idadePaciente,
             Double alturaPaciente, Double pesoPaciente, String sexoPaciente, String corPaciente,
@@ -140,36 +140,36 @@ public class CasoClinico implements Serializable {
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
  
-      if(obj.getExamesCorretosFisicos() != null){
-            List<ExamesFisicos> examesFisicosList = obj.getExamesCorretosFisicos()
+      if(obj.getExamesFisicos() != null){
+            List<ExamesFisicos> examesFisicosList = obj.getExamesFisicos()
             .stream()
             .map(exFisicos -> new ExamesFisicos(exFisicos))
             .collect(Collectors.toList());
-            this.examesCorretosFisicos = examesFisicosList;
+            this.examesFisicos = examesFisicosList;
         }
 
-         if(obj.getExamesCorretosImagem() != null){
-            List<ExamesImagem> exImagemList = obj.getExamesCorretosImagem()
+         if(obj.getExamesImagem() != null){
+            List<ExamesImagem> exImagemList = obj.getExamesImagem()
             .stream()
             .map(exObj -> new ExamesImagem(exObj))
             .collect(Collectors.toList());
-            this.examesCorretosImagem = exImagemList;
+            this.examesImagem = exImagemList;
         }
 
-         if(obj.getExamesCorretosLab() != null){
-            List<ExamesSoroLab> examesCorretosList = obj.getExamesCorretosLab()
+         if(obj.getExamesSoroLab() != null){
+            List<ExamesSoroLab> examesCorretosList = obj.getExamesSoroLab()
             .stream()
             .map(soroLabObj -> new ExamesSoroLab(soroLabObj))
             .collect(Collectors.toList());
-            this.examesCorretosSoroLab = examesCorretosList;
+            this.examesSoroLab = examesCorretosList;
         }
 
-         if(obj.getExamesCorretosTestes() != null){
-            List<TestesFarmacologicos> testeCorretoList = obj.getExamesCorretosTestes()
+         if(obj.getExamesTestesFarma() != null){
+            List<TestesFarmacologicos> testeCorretoList = obj.getExamesTestesFarma()
             .stream()
             .map(testeCorretoObj -> new TestesFarmacologicos(testeCorretoObj))
             .collect(Collectors.toList());
-            this.examesCorretosTestes = testeCorretoList;
+            this.examesTesteFarma = testeCorretoList;
         }
         
     }

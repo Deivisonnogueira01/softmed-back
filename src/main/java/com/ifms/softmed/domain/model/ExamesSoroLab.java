@@ -28,10 +28,12 @@ public class ExamesSoroLab implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSoro;
 
-    private String examesSoro;
+    private String examesSoroCorreto;
+
+    private String examesSoroIncorreto;
 
     @ManyToOne
-    @JoinColumn(name = "soro_id")
+    @JoinColumn(name = "caso_id")
     @JsonIgnore
     private CasoClinico caso;
 
@@ -42,13 +44,15 @@ public class ExamesSoroLab implements Serializable {
     public ExamesSoroLab(Integer idSoro, String examesSoro,
             String exameIncorretos) {
         this.idSoro = idSoro;
-        this.examesSoro = examesSoro;
+        this.examesSoroCorreto = examesSoro;
+        this.examesSoroIncorreto = exameIncorretos;
       
     }
 
     public ExamesSoroLab(ExamesSoroLabDTO obj){
         this.idSoro = obj.getIdExameSoroLabDTO();
-        this.examesSoro = obj.getExamesSoroDTO();
+        this.examesSoroCorreto = obj.getExamesSoroDTOCorreto();
+        this.examesSoroIncorreto = obj.getExamesSoroDTOIncorreto();
     }
 
 }

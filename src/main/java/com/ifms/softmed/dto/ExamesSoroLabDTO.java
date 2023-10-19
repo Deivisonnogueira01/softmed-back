@@ -17,11 +17,14 @@ public class ExamesSoroLabDTO implements Serializable{
 
     private Integer idExameSoroLabDTO;
 
-    private String examesSoroDTO;
+    private String examesSoroDTOCorreto;
+
+    private String examesSoroDTOIncorreto;
 
  
     public ExamesSoroLabDTO(ExamesSoroLab obj){
         this.idExameSoroLabDTO = obj.getIdSoro();
-        this.examesSoroDTO = obj.getExamesSoro();
+        this.examesSoroDTOCorreto = obj.getExamesSoroCorreto();
+        this.examesSoroDTOIncorreto = obj.getExamesSoroIncorreto();
     }
 }

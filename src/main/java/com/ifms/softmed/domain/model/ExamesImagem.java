@@ -26,10 +26,12 @@ public class ExamesImagem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idExameImagem;
   
-    private String examesImagem;
+    private String examesImagemCorreto;
+
+    private String examesImagemIncorretos;
 
     @ManyToOne
-    @JoinColumn(name = "image_id")
+    @JoinColumn(name = "caso_id")
     @JsonIgnore
     private CasoClinico casoi;
 
@@ -37,15 +39,17 @@ public class ExamesImagem implements Serializable {
         
     }
 
-    public ExamesImagem(Integer idExameImagem, String examesImagem) {
+    public ExamesImagem(Integer idExameImagem, String examesImagemCorreto, String exameIncorretos) {
         this.idExameImagem = idExameImagem;
-        this.examesImagem = examesImagem;
+        this.examesImagemCorreto = examesImagemCorreto;
+        this.examesImagemIncorretos = exameIncorretos;
     
     }
 
     public ExamesImagem(ExamesImagemDTO obj){
         this.idExameImagem = obj.getIdExameImagemDTO();
-        this.examesImagem = obj.getExamesImagem();
+        this.examesImagemCorreto = obj.getExamesImagemCorreto();
+        this.examesImagemIncorretos = obj.getExameImagemIncorretos();
     }
 
   

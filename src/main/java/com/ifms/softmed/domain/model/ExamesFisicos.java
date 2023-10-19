@@ -26,7 +26,9 @@ public class ExamesFisicos implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idExame;
 
-    private String examesFisicos;
+    private String examesFisicosCorreto;
+
+    private String examesFisicosIncorreto;
 
     @ManyToOne
     @JoinColumn(name = "caso_id")
@@ -36,14 +38,16 @@ public class ExamesFisicos implements Serializable{
     public ExamesFisicos(){
     }
     
-    public ExamesFisicos(Integer id, String examesFisicos){
+    public ExamesFisicos(Integer id, String examesFisicosCorreto, String examesIncorreto){
         this.idExame = id;
-        this.examesFisicos = examesFisicos;
+        this.examesFisicosCorreto = examesFisicosCorreto;
+        this.examesFisicosIncorreto = examesIncorreto;
     }
 
     public ExamesFisicos(ExameFisicosDTO obj){
         this.idExame = obj.getIdExameFisicoDTO();
-        this.examesFisicos = obj.getExamesFisicosDTO();
+        this.examesFisicosCorreto = obj.getExamesFisicosCorretoDTO();
+        this.examesFisicosIncorreto = obj.getExamesFisicosIncorretoDTO();
     }
 
 

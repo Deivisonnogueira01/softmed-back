@@ -26,10 +26,12 @@ public class TestesFarmacologicos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTestes;
 
-    private String testeFarma;
+    private String testeFarmaCorreto;
+
+    private String testesFarmaIncorreto;
   
     @ManyToOne
-    @JoinColumn(name = "teste_id")
+    @JoinColumn(name = "caso_id")
     @JsonIgnore
     private CasoClinico casot;
 
@@ -37,15 +39,17 @@ public class TestesFarmacologicos implements Serializable {
         
     }
     
-    public TestesFarmacologicos(Integer idTestes, String testesFarma) {
+    public TestesFarmacologicos(Integer idTestes, String testesFarma, String testesIncorreto) {
         this.idTestes = idTestes;
-        this.testeFarma = testesFarma;
+        this.testeFarmaCorreto = testesFarma;
+        this.testesFarmaIncorreto = testesIncorreto;
         
     }
 
     public TestesFarmacologicos(TestesFarmacologicosDTO obj){
         this.idTestes = obj.getIdTestesDTO();
-        this.testeFarma = obj.getTestesFarma();
+        this.testeFarmaCorreto = obj.getTestesFarmaDTOCorreto();
+        this.testesFarmaIncorreto = obj.getTestesFarmaDTOIncorreto();
     }
 
 

@@ -62,13 +62,13 @@ public class CasoClinicoDTO implements Serializable {
 
     protected Patologia patologia;
 
-    private List<ExamesSoroLabDTO> examesCorretosLab = new ArrayList<>();
+    private List<ExamesSoroLabDTO> examesSoroLab = new ArrayList<>();
 
-    private List<ExamesImagemDTO> examesCorretosImagem = new ArrayList<>();
+    private List<ExamesImagemDTO> examesImagem = new ArrayList<>();
 
-    private List<ExameFisicosDTO> examesCorretosFisicos = new ArrayList<>();
+    private List<ExameFisicosDTO> examesFisicos = new ArrayList<>();
 
-    private List<TestesFarmacologicosDTO> examesCorretosTestes = new ArrayList<>();
+    private List<TestesFarmacologicosDTO> examesTestesFarma = new ArrayList<>();
     
     public CasoClinicoDTO(CasoClinico obj) {
         this.casoClinicoId = obj.getCasoClinicoId();
@@ -92,36 +92,36 @@ public class CasoClinicoDTO implements Serializable {
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
 
-        if(obj.getExamesCorretosSoroLab() != null){
-            List<ExamesSoroLabDTO> examesSoroLabsCorretosDTO = obj.getExamesCorretosSoroLab()
+        if(obj.getExamesSoroLab() != null){
+            List<ExamesSoroLabDTO> examesSoroLabsCorretosDTO = obj.getExamesSoroLab()
             .stream()
             .map(examesCorreLab -> new ExamesSoroLabDTO(examesCorreLab))
             .collect(Collectors.toList());
-            this.examesCorretosLab = examesSoroLabsCorretosDTO;
+            this.examesSoroLab = examesSoroLabsCorretosDTO;
         }
 
-        if(obj.getExamesCorretosImagem() != null){
-            List<ExamesImagemDTO> examesCorretosDTO = obj.getExamesCorretosImagem()
+        if(obj.getExamesImagem() != null){
+            List<ExamesImagemDTO> examesCorretosDTO = obj.getExamesImagem()
             .stream()
             .map(examesCorretosObj -> new ExamesImagemDTO(examesCorretosObj))
             .collect(Collectors.toList());
-            this.examesCorretosImagem = examesCorretosDTO;
+            this.examesImagem = examesCorretosDTO;
         }
 
-        if(obj.getExamesCorretosFisicos() != null){
-            List<ExameFisicosDTO> examesCorretosDTO = obj.getExamesCorretosFisicos()
+        if(obj.getExamesFisicos() != null){
+            List<ExameFisicosDTO> examesCorretosDTO = obj.getExamesFisicos()
             .stream()
             .map(examesCorretosDTOObj -> new ExameFisicosDTO(examesCorretosDTOObj))
             .collect(Collectors.toList());
-            this.examesCorretosFisicos = examesCorretosDTO;
+            this.examesFisicos = examesCorretosDTO;
         }
 
-        if(obj.getExamesCorretosTestes() != null){
-            List<TestesFarmacologicosDTO> testesCorretosDTO = obj.getExamesCorretosTestes()
+        if(obj.getExamesTesteFarma() != null){
+            List<TestesFarmacologicosDTO> testesCorretosDTO = obj.getExamesTesteFarma()
             .stream()
             .map(examesCorretosTestesObj -> new TestesFarmacologicosDTO(examesCorretosTestesObj))
             .collect(Collectors.toList());
-            this.examesCorretosTestes = testesCorretosDTO;
+            this.examesTestesFarma = testesCorretosDTO;
         }
 
     }
