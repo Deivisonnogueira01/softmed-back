@@ -52,5 +52,10 @@ public class TestesFarmacologicos implements Serializable {
         this.testesFarmaIncorreto = obj.getTestesFarmaDTOIncorreto();
     }
 
+     public TestesFarmacologicos(TestesFarmacologicosDTO exameDTO, CasoClinico casoClinico) {
+        this.testeFarmaCorreto = exameDTO.getTestesFarmaDTOCorreto();
+        this.testesFarmaIncorreto = exameDTO.getTestesFarmaDTOIncorreto();
+        this.casot = casoClinico;
+    }
 
 }

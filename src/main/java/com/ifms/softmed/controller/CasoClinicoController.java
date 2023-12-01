@@ -58,4 +58,6 @@ public class CasoClinicoController {
      return ResponseEntity.created(uri).build();
   }
 
+  
+
 }

@@ -21,10 +21,13 @@ public class ExamesSoroLabDTO implements Serializable{
 
     private String examesSoroDTOIncorreto;
 
+    private Integer casoClinicoId;
+
  
     public ExamesSoroLabDTO(ExamesSoroLab obj){
         this.idExameSoroLabDTO = obj.getIdSoro();
         this.examesSoroDTOCorreto = obj.getExamesSoroCorreto();
         this.examesSoroDTOIncorreto = obj.getExamesSoroIncorreto();
+        this.casoClinicoId = obj.getCaso().getCasoClinicoId();
     }
 }

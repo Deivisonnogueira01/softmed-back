@@ -34,7 +34,7 @@ public class AdministratorController {
     return ResponseEntity.ok().body(listDTO);
   }
 
-  @PreAuthorize("hasAnyRole('ADMIN')")
+ // @PreAuthorize("hasAnyRole('ADMIN')")
   @PostMapping
   public ResponseEntity<AdministratorDTO> create(@Valid @RequestBody AdministratorDTO objDTO) {
     Administrator newObj = serviceImpl.create(objDTO);

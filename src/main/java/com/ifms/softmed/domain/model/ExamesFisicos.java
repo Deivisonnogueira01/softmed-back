@@ -18,10 +18,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class ExamesFisicos implements Serializable{
-    
+public class ExamesFisicos implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idExame;
@@ -34,22 +34,26 @@ public class ExamesFisicos implements Serializable{
     @JoinColumn(name = "caso_id")
     @JsonIgnore
     private CasoClinico casof;
- 
-    public ExamesFisicos(){
+
+    public ExamesFisicos() {
     }
-    
-    public ExamesFisicos(Integer id, String examesFisicosCorreto, String examesIncorreto){
+
+    public ExamesFisicos(Integer id, String examesFisicosCorreto, String examesIncorreto) {
         this.idExame = id;
         this.examesFisicosCorreto = examesFisicosCorreto;
         this.examesFisicosIncorreto = examesIncorreto;
     }
 
-    public ExamesFisicos(ExameFisicosDTO obj){
+    public ExamesFisicos(ExameFisicosDTO obj) {
         this.idExame = obj.getIdExameFisicoDTO();
         this.examesFisicosCorreto = obj.getExamesFisicosCorretoDTO();
         this.examesFisicosIncorreto = obj.getExamesFisicosIncorretoDTO();
     }
 
+    public ExamesFisicos(ExameFisicosDTO exameDTO, CasoClinico casoClinico) {
+        this.examesFisicosCorreto = exameDTO.getExamesFisicosCorretoDTO();
+        this.examesFisicosIncorreto = exameDTO.getExamesFisicosIncorretoDTO();
+        this.casof = casoClinico;
+    }
 
-    
 }

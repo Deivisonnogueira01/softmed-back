@@ -43,7 +43,6 @@ public class ExamesImagem implements Serializable {
         this.idExameImagem = idExameImagem;
         this.examesImagemCorreto = examesImagemCorreto;
         this.examesImagemIncorretos = exameIncorretos;
-    
     }
 
     public ExamesImagem(ExamesImagemDTO obj){
@@ -52,5 +51,9 @@ public class ExamesImagem implements Serializable {
         this.examesImagemIncorretos = obj.getExameImagemIncorretos();
     }
 
-  
+    public ExamesImagem(ExamesImagemDTO exameDTO, CasoClinico casoClinico) {
+        this.examesImagemCorreto = exameDTO.getExamesImagemCorreto();
+        this.examesImagemIncorretos = exameDTO.getExameImagemIncorretos();  // Corrigido aqui
+        this.casoi = casoClinico;
+    }
 }

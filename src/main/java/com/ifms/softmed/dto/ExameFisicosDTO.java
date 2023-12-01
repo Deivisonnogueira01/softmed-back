@@ -21,12 +21,15 @@ public class ExameFisicosDTO implements Serializable {
 
    private String examesFisicosIncorretoDTO;
 
+   private Integer casoClinicoId;
+
   
 
    public ExameFisicosDTO(ExamesFisicos obj) {
       this.idExameFisicoDTO = obj.getIdExame();
       this.examesFisicosCorretoDTO = obj.getExamesFisicosCorreto();
       this.examesFisicosIncorretoDTO = obj.getExamesFisicosIncorreto();
+      this.casoClinicoId = obj.getCasof().getCasoClinicoId();
  
    }
 }

@@ -55,5 +55,11 @@ public class ExamesSoroLab implements Serializable {
         this.examesSoroIncorreto = obj.getExamesSoroDTOIncorreto();
     }
 
+     public ExamesSoroLab(ExamesSoroLabDTO exameDTO, CasoClinico casoClinico) {
+        this.examesSoroCorreto = exameDTO.getExamesSoroDTOCorreto();
+        this.examesSoroIncorreto = exameDTO.getExamesSoroDTOIncorreto();
+        this.caso = casoClinico;
+    }
+
 }
 

@@ -20,11 +20,14 @@ public class TestesFarmacologicosDTO implements Serializable {
 
     private String testesFarmaDTOIncorreto;
 
+    private Integer casoClinicoId;
+
 
     public TestesFarmacologicosDTO(TestesFarmacologicos obj) {
         this.idTestesDTO = obj.getIdTestes();
         this.testesFarmaDTOCorreto = obj.getTesteFarmaCorreto();
         this.testesFarmaDTOIncorreto = obj.getTestesFarmaIncorreto();
+        this.casoClinicoId = obj.getCasot().getCasoClinicoId();
     }
 
 }

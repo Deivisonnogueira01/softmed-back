@@ -21,11 +21,14 @@ public class ExamesImagemDTO implements Serializable {
 
     private String exameImagemIncorretos;
 
+    private Integer casoClinicoId;
+
 
     public ExamesImagemDTO(ExamesImagem obj){
         this.idExameImagemDTO = obj.getIdExameImagem();
         this.examesImagemCorreto = obj.getExamesImagemCorreto();
         this.exameImagemIncorretos = obj.getExamesImagemIncorretos();
+        this.casoClinicoId = obj.getCasoi().getCasoClinicoId();
         
     }
 }

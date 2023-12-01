@@ -30,7 +30,7 @@ public class AdministratorDTO implements Serializable {
 
     public AdministratorDTO() {
         super();
-        addPerfil(Perfil.ADMIN);
+        addPerfil(Perfil.ALUNO);
     }
 
     public AdministratorDTO(Administrator obj) {
@@ -40,7 +40,7 @@ public class AdministratorDTO implements Serializable {
         this.senha = obj.getSenha();
         this.perfils = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
-        addPerfil(Perfil.ADMIN);
+        addPerfil(Perfil.ALUNO);
     }
 
     public Integer getId() {
