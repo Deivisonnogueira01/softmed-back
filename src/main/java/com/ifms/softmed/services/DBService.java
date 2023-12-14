@@ -70,6 +70,7 @@ public class DBService {
                                 "Não Há Registros", /// HPP
                                 "SOMENTE O PAI POSSUI DIABETES", // HF
                                 "nao possui",
+                                "nao",
                                 Especialidade.MEDICINA_DA_FAMILIA,
                                 Patologia.GOTA);
 

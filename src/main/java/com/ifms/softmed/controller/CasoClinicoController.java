@@ -1,6 +1,5 @@
 package com.ifms.softmed.controller;
 
-import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ifms.softmed.domain.enums.Especialidade;
 import com.ifms.softmed.domain.model.CasoClinico;
@@ -50,12 +48,12 @@ public class CasoClinicoController {
      return service.findByEspecialidade(especialidade);
   }
 
- // @PreAuthorize("hasAnyRole('ADMIN')")
+  @PreAuthorize("hasAnyRole('ADMIN')")
   @PostMapping
-  public ResponseEntity<CasoClinicoDTO> create(@Valid @RequestBody CasoClinicoDTO objDTO){
+  public ResponseEntity<CasoClinico> create(@Valid @RequestBody CasoClinicoDTO objDTO){
      CasoClinico newObj = service.create(objDTO);
-     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getCasoClinicoId()).toUri();
-     return ResponseEntity.created(uri).build();
+     
+     return ResponseEntity.ok(newObj);
   }
 
   

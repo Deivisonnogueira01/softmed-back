@@ -82,11 +82,6 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
             novoCasoClinico.setExamesTesteFarma(examesFisicosAssociados);
         }
 
-        // Pode adicionar lógica semelhante para outros tipos de exames, se necessário
-
-        // Atualiza o caso clínico com as associações de exames
-        
-
         return repository.save(novoCasoClinico);
     }
 

@@ -70,6 +70,8 @@ public class CasoClinico implements Serializable {
 
     private String historiaPsicossocial;
 
+    private String condutaTerapeutica;
+
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
@@ -93,6 +95,7 @@ public class CasoClinico implements Serializable {
             String profissaoPaciente, String religiaoPaciente, String naturalPaciente, String residentePaciente,
             String historiaDoencaAtual, String queixaPrincipal, String interrogatorioDiversosAparelhos,
             String historiaPatologicaPregressa, String historiaFamiliar, String historiaPsicossocial,
+            String condutaTerapeutica,
             Especialidade especialidade,
             Patologia patologia) {
         this.casoClinicoId = casoClinicoId;
@@ -113,6 +116,7 @@ public class CasoClinico implements Serializable {
         this.historiaPatologicaPregressa = historiaPatologicaPregressa;
         this.historiaFamiliar = historiaFamiliar;
         this.historiaPsicossocial = historiaPsicossocial;
+        this.condutaTerapeutica = condutaTerapeutica;
         this.especialidade = especialidade;
         this.patologia = patologia;
 
@@ -137,6 +141,7 @@ public class CasoClinico implements Serializable {
         this.historiaPatologicaPregressa = obj.getHistoriaPatologicaPregressa();
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
+        this.condutaTerapeutica = obj.getCondutaTerapeutica();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
  

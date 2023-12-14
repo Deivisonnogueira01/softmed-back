@@ -58,6 +58,8 @@ public class CasoClinicoDTO implements Serializable {
 
     protected String historiaPsicossocial;
 
+    protected String condutaTerapeutica;
+
     protected Especialidade especialidade;
 
     protected Patologia patologia;
@@ -89,6 +91,7 @@ public class CasoClinicoDTO implements Serializable {
         this.historiaPatologicaPregressa = obj.getHistoriaPatologicaPregressa();
         this.historiaFamiliar = obj.getHistoriaFamiliar();
         this.historiaPsicossocial = obj.getHistoriaPsicossocial();
+        this.condutaTerapeutica = obj.getCondutaTerapeutica();
         this.especialidade = obj.getTipoEspecialidade();
         this.patologia = obj.getPatologia();
 

@@ -1,8 +1,0 @@
-Exames 
-
-HDA (HISTÓRIA DA DOENÇA ATUAL);
-QP (queixa principal);
-IDA (interrogatório sobre diversos aparelhos);
-HPP (história patológica pregressa);
-HF (história familiar);
-HPS (história psicossocial).
