@@ -10,10 +10,11 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ifms.softmed.domain.enums.Perfil;
-import com.ifms.softmed.domain.model.Administrator;
+import com.ifms.softmed.domain.model.Aluno;
 
-public class AdministratorDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class AlunoDTO implements Serializable{
+    
+ private static final long serialVersionUID = 1L;
 
     private Integer id;
 
@@ -28,19 +29,19 @@ public class AdministratorDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
-    public AdministratorDTO() {
+    public AlunoDTO() {
         super();
-        addPerfil(Perfil.ADMIN);
+        addPerfil(Perfil.ALUNO);
     }
 
-    public AdministratorDTO(Administrator obj) {
+    public AlunoDTO(Aluno obj) {
         super();
         this.id =  obj.getId();
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
         this.perfils = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
-        addPerfil(Perfil.ADMIN);
+        addPerfil(Perfil.ALUNO);
     }
 
     public Integer getId() {
@@ -84,4 +85,6 @@ public class AdministratorDTO implements Serializable {
         this.dataCriacao = dataCriacao;
     }
  
+
+
 }

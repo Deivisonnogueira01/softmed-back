@@ -12,11 +12,7 @@ import com.ifms.softmed.domain.enums.Perfil;
 import com.ifms.softmed.domain.model.Administrator;
 import com.ifms.softmed.domain.model.CasoClinico;
 import com.ifms.softmed.repositories.CasoClinicoRepository;
-import com.ifms.softmed.repositories.ExameFisicoRepository;
-import com.ifms.softmed.repositories.ExameImagemRepository;
-import com.ifms.softmed.repositories.ExameSoroLabRepository;
 import com.ifms.softmed.repositories.PessoaRepository;
-import com.ifms.softmed.repositories.TestesFarmaRepository;
 
 @Service
 public class DBService {
@@ -26,18 +22,6 @@ public class DBService {
 
         @Autowired
         private PessoaRepository pessoaRepository;
-
-        @Autowired
-        private ExameFisicoRepository exameFisicoRepository;
-
-        @Autowired
-        private ExameImagemRepository exameImagemRepository;
-
-        @Autowired
-        private ExameSoroLabRepository exameSoroLabRepository;
-
-        @Autowired
-        private TestesFarmaRepository testesFarmaRepository;
 
         @Autowired
         private BCryptPasswordEncoder encoder;

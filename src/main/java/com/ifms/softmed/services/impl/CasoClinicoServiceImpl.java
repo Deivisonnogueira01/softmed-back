@@ -47,7 +47,7 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
         casoClinicoDTO.setCasoClinicoId(null);
         CasoClinico novoCasoClinico = new CasoClinico(casoClinicoDTO);
 
-        // Associa os exames de imagem ao caso clínico usando o ID do caso clínico
+        // Associa os exames ao caso clínico usando o ID do caso clínico
         if (casoClinicoDTO.getExamesImagem() != null) {
             List<ExamesImagem> examesImagemAssociados = casoClinicoDTO.getExamesImagem()
                     .stream()
@@ -66,20 +66,20 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
         }
 
         if(casoClinicoDTO.getExamesSoroLab() != null){
-            List<ExamesSoroLab> examesFisicosAssociados = casoClinicoDTO.getExamesSoroLab()
+            List<ExamesSoroLab> examesSoroLabAssociados = casoClinicoDTO.getExamesSoroLab()
             .stream()
             .map(exameDTO -> new ExamesSoroLab(exameDTO))
             .collect(Collectors.toList());
-            novoCasoClinico.setExamesSoroLab(examesFisicosAssociados);
+            novoCasoClinico.setExamesSoroLab(examesSoroLabAssociados);
         }
 
 
         if(casoClinicoDTO.getExamesTestesFarma() != null){
-            List<TestesFarmacologicos> examesFisicosAssociados = casoClinicoDTO.getExamesTestesFarma()
+            List<TestesFarmacologicos> testesFarmaAssociados = casoClinicoDTO.getExamesTestesFarma()
             .stream()
             .map(exameDTO -> new TestesFarmacologicos(exameDTO))
             .collect(Collectors.toList());
-            novoCasoClinico.setExamesTesteFarma(examesFisicosAssociados);
+            novoCasoClinico.setExamesTesteFarma(testesFarmaAssociados);
         }
 
         return repository.save(novoCasoClinico);
