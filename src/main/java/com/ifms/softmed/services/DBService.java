@@ -26,6 +26,7 @@ public class DBService {
         @Autowired
         private BCryptPasswordEncoder encoder;
 
+        @SuppressWarnings("null")
         public void instanciaDb() {
 
                 Administrator admin1 = new Administrator(null, "deivison.nogueira@live.com",
