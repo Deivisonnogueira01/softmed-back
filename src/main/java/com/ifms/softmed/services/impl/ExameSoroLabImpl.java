@@ -28,6 +28,7 @@ public class ExameSoroLabImpl implements ExameSoroLabService{
        return repository.findAll();
     }
 
+    @SuppressWarnings("null")
     public List<ExamesSoroLab> create(List<ExamesSoroLabDTO> examesSoroLabDTO, Integer idCasoClinico) {
         // Recupera o caso clínico existente pelo ID
         

@@ -27,6 +27,7 @@ public class ExameImagemImpl implements ExameImagemService {
          return repository.findAll();
     }
     
+    @SuppressWarnings("null")
     public List<ExamesImagem> create(List<ExamesImagemDTO> examesImagemDTOs, Integer idCasoClinico) {
         // Recupera o caso clínico existente pelo ID
         

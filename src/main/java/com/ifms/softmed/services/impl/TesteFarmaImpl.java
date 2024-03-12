@@ -27,6 +27,7 @@ public class TesteFarmaImpl implements TestesFarmaService{
         return repository.findAll(); 
     }
 
+    @SuppressWarnings("null")
     public List<TestesFarmacologicos> create(List<TestesFarmacologicosDTO> testesDTO, Integer idCasoClinico){
 
         CasoClinico casoClinico = casoClinicoService.findbyId(idCasoClinico);

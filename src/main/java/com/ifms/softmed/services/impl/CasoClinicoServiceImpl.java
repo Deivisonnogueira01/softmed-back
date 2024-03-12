@@ -32,7 +32,6 @@ public class CasoClinicoServiceImpl implements CasoClinicoService {
     @Override
     @SuppressWarnings("null")
     public CasoClinico findbyId(Integer id) {
-      //  @SuppressWarnings("null")
         Optional<CasoClinico> obj = repository.findById(id);
         return obj.orElse(null);
         

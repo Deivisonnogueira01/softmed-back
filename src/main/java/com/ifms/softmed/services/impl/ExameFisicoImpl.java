@@ -28,6 +28,7 @@ public class ExameFisicoImpl implements ExameFisicoService {
        return repository.findAll();
     }
     
+    @SuppressWarnings("null")
     public List<ExamesFisicos> create(List<ExameFisicosDTO> exameFisicosDTOs, Integer idCaso){
 
        CasoClinico casoClinico = casoClinicoService.findbyId(idCaso);
